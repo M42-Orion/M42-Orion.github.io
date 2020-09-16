@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Django_1 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,Django第一弹Django的名字由来Django 命名由来官方网站只给出了一句话：To this day, he&amp;#39;s considered one of the best guitari,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Django_1</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Django_1</h1>
+        <div class="stuff">
+            <span>九月 12, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Django/" rel="tag">Django</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Django第一弹"><a href="#Django第一弹" class="headerlink" title="Django第一弹"></a>Django第一弹</h1><h2 id="Django的名字由来"><a href="#Django的名字由来" class="headerlink" title="Django的名字由来"></a>Django的名字由来</h2><p>Django 命名由来官方网站只给出了一句话：<br><code>To this day, he&#39;s considered one of the best guitarists of all time, Listen to his music. You&#39;ll like it.</code><br>Django 是以一个名叫 Django Reinhardt 吉他手的的名字来命名的。因为程序员的世界不能缺少音乐，开发者在他的音乐中得到灵感，为了感谢纪念这位吉他手，所以 Django 的名字也由此诞生！<br>Django 的发音也非常有趣，大写字母 D 不发音，正确的发音是”栈go”,而很多程序员则会把它读成是”D将go”。  </p>
+<h2 id="Django的创建"><a href="#Django的创建" class="headerlink" title="Django的创建"></a>Django的创建</h2><p>在默认已经安装好python环境与python虚拟环境之后<br>项目创建命令： <code>django-admin.py startproject HelloWorld</code><br>生成目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|-- HelloWorld</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|   |-- asgi.py</span><br><span class="line">|   |-- settings.py</span><br><span class="line">|   |-- urls.py</span><br><span class="line">|   `-- wsgi.py</span><br><span class="line">`-- manage.py</span><br></pre></td></tr></table></figure>
+
+<p>应用创建命令： <code>py manage.py startapp one</code><br>生成目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|polls/</span><br><span class="line">|    |--__init__.py</span><br><span class="line">|    |--admin.py</span><br><span class="line">|    |--apps.py</span><br><span class="line">|    |--migrations/</span><br><span class="line">|        |--__init__.py</span><br><span class="line">|    |--models.py</span><br><span class="line">|    |--tests.py</span><br><span class="line">|    |--views.py</span><br></pre></td></tr></table></figure>
+
+<p>项目运行命令：<code>py manage.py runserver</code> 如果需要指定端口：<code>py manage.py runserver 8080</code></p>
+<h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><p><code>HelloWorld</code>: 项目文件夹。<br><code>manage.py</code>: 命令工具文件，用于与项目交互，如启动项目。<br><code>HelloWorld/__init__.py</code>: 一个空文件，告诉 Python 该目录是一个 Python 包。<br><code>HelloWorld/asgi.py</code>: 部署的时候用到，暂时不管。<br><code>HelloWorld/settings.py</code>: 配置文件。<br><code>HelloWorld/urls.py</code>: 项目路径配置。<br><code>HelloWorld/wsgi.py</code>: 部署的时候用到，暂时不管。</p>
+<p><code>admin.py</code>:管理员相关。<br><code>apps.py</code>：暂时不管<br><code>migrations/__init__.py</code>：这个文件夹下都是自动生成的，不管<br><code>models.py</code>：数据模型。<br><code>tests.py</code>：用于测试。<br><code>views.py</code>：视图部分，MVC中的V。</p>
+<h1 id="settings-变量介绍"><a href="#settings-变量介绍" class="headerlink" title="settings 变量介绍"></a>settings 变量介绍</h1><p>BASE_DIR：根目录。<br>SECRET_KEY :一个与安全有关的东西 。不管。<br>DEBUG：用于开发与上线的调试。<br>ALLOWED_HOSTS：包含你允许访问的域名，若是同意所有，则’*’。<br>INSTALLED_APPS：一些应用，包括more应用，如管理员、用户、会话、消息等。<br>MIDDLEWARE：中间件。<br>TEMPLATES：与模板有关，比如模板引擎。<br>WSGI_APPLICATION：不管。<br>DATABASES：数据库。<br>AUTH_PASSWORD_VALIDATORS：用户密码相关。<br>LANGUAGE_CODE：语言配置，中文请用：’zh-hans’<br>TIME_ZONE = 时间配置，中国请用：’Asia/Shanghai’<br>STATIC_URL = 静态文件</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1423014472.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
