@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Django-3 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,路径传参首先展示一下项目目录：  
+视图部分首先将app.views修改为对象编程而不是函数编程，引入View父类
+123456789101112131415161718192021import r,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Django-3</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Django-3</h1>
+        <div class="stuff">
+            <span>九月 19, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Django/" rel="tag">Django</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="路径传参"><a href="#路径传参" class="headerlink" title="路径传参"></a>路径传参</h1><p>首先展示一下项目目录：<br><img src="" alt="目录">  </p>
+<h2 id="视图部分"><a href="#视图部分" class="headerlink" title="视图部分"></a>视图部分</h2><p>首先将app.views修改为对象编程而不是函数编程，引入View父类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> View</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Music</span>(<span class="params">View</span>):</span></span><br><span class="line"></span><br><span class="line">    DOUBAN_MUSIC_API = <span class="string">&#x27;https://api.douban.com/v2/music/search?q=&#123;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,request</span>):</span></span><br><span class="line">        music_name = request.GET.get(<span class="string">&quot;musicname&quot;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> music_name:</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&#x27;errcode&#x27;</span>:<span class="number">-1</span>,<span class="string">&#x27;errmsg&#x27;</span>:<span class="string">&#x27;音乐名字不能为空&#x27;</span>&#125;)</span><br><span class="line">        url = self.DOUBAN_MUSIC_API.format(music_name)</span><br><span class="line">        response = requests.get(url)</span><br><span class="line"></span><br><span class="line">        data = response.json()</span><br><span class="line">        <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&#x27;errcode&#x27;</span>:<span class="number">0</span>,<span class="string">&#x27;errmsg&#x27;</span>:<span class="string">&#x27;成功&#x27;</span>,<span class="string">&#x27;data&#x27;</span>:data&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这里使用了：</p>
+<ul>
+<li>第三方requests请求豆瓣的接口，获取数据。</li>
+<li>使用<code>request.GET.get</code>获取变量名为musicname的数据。</li>
+<li>如果没有值就返回一个json，表示参数不能为空。</li>
+<li>而后开始拼接url,获取接口数据并添加自定义的字典内容将其返回。</li>
+</ul>
+<h2 id="路由部分"><a href="#路由部分" class="headerlink" title="路由部分"></a>路由部分</h2><p>修改<code>app.urls</code>为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> Music</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;music&#x27;</span>, Music.as_view(), name = <span class="string">&quot;index&quot;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>one.urls</code>为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;app/&#x27;</span>,include(<span class="string">&#x27;app.urls&#x27;</span>)),<span class="comment">#最初这里是app,而后改为app/</span></span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">study\one&gt; py .\manage.py runserver</span><br></pre></td></tr></table></figure>
+<p><img src="" alt="结果"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1423014472.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E4%BC%A0%E5%8F%82"><span class="toc-number">1.</span> <span class="toc-text">路径传参</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E9%83%A8%E5%88%86"><span class="toc-number">1.1.</span> <span class="toc-text">视图部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%83%A8%E5%88%86"><span class="toc-number">1.2.</span> <span class="toc-text">路由部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
