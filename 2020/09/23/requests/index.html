@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>requests - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,一个图片爬虫12345678910111213141516171819import requestsfrom bs4 import BeautifulSoupimport os&amp;#x27;&amp;#x27,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">requests</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">requests</h1>
+        <div class="stuff">
+            <span>九月 23, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="一个图片爬虫"><a href="#一个图片爬虫" class="headerlink" title="一个图片爬虫"></a>一个图片爬虫</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">图片爬虫</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    os.mkdir(<span class="string">&quot;image&quot;</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">results = requests.get(<span class="string">&#x27;https://c-ssl.duitang.com/uploads/item/202001/19/20200119142316_euaol.jpg&#x27;</span>)<span class="comment">#get方式请求该网址</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&#x27;image/诸葛大力.jpg&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(results.content)</span><br><span class="line">            f.close()</span><br><span class="line">            print(<span class="string">&quot;文件保存成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="图片Ajax"><a href="#图片Ajax" class="headerlink" title="图片Ajax"></a>图片Ajax</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">ajax花瓣网图片爬虫</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    os.mkdir(<span class="string">&quot;image&quot;</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ajax</span>(<span class="params">n</span>):</span></span><br><span class="line">    results = requests.get(<span class="string">r&#x27;https://api.huaban.com/search/?q=%E8%AF%B8%E8%91%9B%E5%A4%A7%E5%8A%9B&amp;k77hfl6o&amp;page=&#123;&#125;&amp;per_page=20&amp;wfl=1&#x27;</span>.format(n))<span class="comment">#get方式请求该网址</span></span><br><span class="line">    results.encoding = results.apparent_encoding</span><br><span class="line">    results_json = json.loads(results.text)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> results_json[<span class="string">&#x27;pins&#x27;</span>]:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;image/&#123;&#125;.jpg&#x27;</span>.format(i[<span class="string">&#x27;pin_id&#x27;</span>]), <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            results = requests.get(<span class="string">r&#x27;https://hbimg.huabanimg.com/&#x27;</span>+i[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;key&#x27;</span>])<span class="comment">#图片真实地址</span></span><br><span class="line">            f.write(results.content)</span><br><span class="line">            f.close()</span><br><span class="line">            print(i[<span class="string">&#x27;pin_id&#x27;</span>],<span class="string">&quot;文件保存成功&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            ajax(n)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="微博信息爬虫"><a href="#微博信息爬虫" class="headerlink" title="微博信息爬虫"></a>微博信息爬虫</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">beautifulsoup常见的用法</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line">results = requests.get(<span class="string">&#x27;https://s.weibo.com/user?q=蔡徐坤&amp;Refer=weibo_user&#x27;</span>,headers = headers)</span><br><span class="line">html = results.text</span><br><span class="line">soup = BeautifulSoup(html)</span><br><span class="line">users = soup.find(<span class="string">&#x27;div&#x27;</span>,class_=<span class="string">&quot;card-wrap&quot;</span>).find_all(<span class="string">&#x27;div&#x27;</span>,class_ = <span class="string">&#x27;card&#x27;</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#这里有两个find，一个事find，一个事find_all，用法都相同，找到一个什么样的标签，class属性是什么</span></span><br><span class="line"><span class="comment">#find返回的是一个值，find_all是一个列表，所以列表需要遍历</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> users:</span><br><span class="line">    print(i.find(<span class="string">&#x27;a&#x27;</span>,class_ = <span class="string">&#x27;name&#x27;</span>).text)<span class="comment">#名字，提取信息只需要加一个.text在后面就可以了</span></span><br><span class="line">    print(i.find(<span class="string">&#x27;i&#x27;</span>,class_=<span class="string">&quot;icon-sex&quot;</span>)[<span class="string">&#x27;class&#x27;</span>][<span class="number">-1</span>][<span class="number">9</span>::])<span class="comment">#性别，这里是提取class属性信息</span></span><br><span class="line">    print(i.find(<span class="string">&#x27;i&#x27;</span>,class_=<span class="string">&quot;icon-sex&quot;</span>).parent.text[<span class="number">26</span>:<span class="number">-18</span>:])<span class="comment">#所在地</span></span><br><span class="line">    print([i.text <span class="keyword">for</span> i <span class="keyword">in</span> i.find(<span class="string">&#x27;span&#x27;</span>,class_=<span class="string">&quot;s-nobr&quot;</span>).parent.find_all(<span class="string">&#x27;span&#x27;</span>)])<span class="comment">#关注、粉丝、微博</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> [i.text <span class="keyword">for</span> i <span class="keyword">in</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> i.find_all(<span class="string">&#x27;p&#x27;</span>)]]:</span><br><span class="line">        <span class="keyword">if</span> i[:<span class="number">2</span>:] == <span class="string">&#x27;简介&#x27;</span>:</span><br><span class="line">            print(i)</span><br><span class="line">        <span class="keyword">elif</span> i[:<span class="number">2</span>:] == <span class="string">&#x27;标签&#x27;</span>:</span><br><span class="line">            print(i)</span><br><span class="line">        <span class="keyword">elif</span> i[:<span class="number">2</span>:] == <span class="string">&#x27;教育&#x27;</span>:</span><br><span class="line">            print(i)</span><br><span class="line">        <span class="keyword">elif</span> i[:<span class="number">2</span>:] == <span class="string">&#x27;职业&#x27;</span>:</span><br><span class="line">            print(i)</span><br><span class="line">    print(<span class="string">&#x27;————————————————————————————————————————————————————————————————————————————————————————————————&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Xpath基本使用</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">Useragent = UserAgent()</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>:Useragent.random,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">results = requests.get(<span class="string">r&#x27;https://s.weibo.com/weibo?q=%E6%B2%88%E4%BB%8E%E6%96%87&amp;Refer=index&#x27;</span>,headers=headers)<span class="comment">#get方式请求该网址</span></span><br><span class="line"><span class="comment"># results.encoding = results.apparent_encoding#获取网页编码，对网页内容进行编码，防止乱码产生</span></span><br><span class="line"><span class="comment"># print(results.text)#查看返回结果</span></span><br><span class="line">html = etree.HTML(results.text)</span><br><span class="line">All = html.xpath(<span class="string">&#x27;/html/body/div[1]/div[2]/ul/li[1]/a/text()&#x27;</span>)</span><br><span class="line">people = html.xpath(<span class="string">&#x27;/html/body/div[1]/div[2]/ul/li[2]/a/text()&#x27;</span>)</span><br><span class="line">essay = html.xpath(<span class="string">&#x27;/html/body/div[1]/div[2]/ul/li[3]/a/text()&#x27;</span>)</span><br><span class="line">print(All,people,essay)</span><br></pre></td></tr></table></figure>
+
+<h2 id="爬虫添加进程池"><a href="#爬虫添加进程池" class="headerlink" title="爬虫添加进程池"></a>爬虫添加进程池</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">多进程爬虫，pool进程池</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">Useragent = UserAgent()</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>:Useragent.random,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">n</span>):</span></span><br><span class="line">    results = requests.get(<span class="string">&#x27;https://movie.douban.com/subject/26266893/comments?start=&#123;&#125;&amp;limit=20&amp;sort=time&amp;status=P&amp;comments_only=1&#x27;</span>.format(n),headers=headers)<span class="comment">#get方式请求该网址</span></span><br><span class="line">    results.encoding = results.apparent_encoding<span class="comment">#获取网页编码，对网页内容进行编码，防止乱码产生</span></span><br><span class="line">    results_json = json.loads(results.text)</span><br><span class="line">    soup = BeautifulSoup(results_json[<span class="string">&#x27;html&#x27;</span>])<span class="comment">#配合BeautifulSoup获取标签内容</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> soup.find_all(<span class="string">&#x27;div&#x27;</span>,class_ = <span class="string">&#x27;comment&#x27;</span>):</span><br><span class="line">        name = i.find(<span class="string">&#x27;span&#x27;</span>,class_ = <span class="string">&#x27;comment-info&#x27;</span>).a.string</span><br><span class="line">        fraction = i.find(<span class="string">&#x27;span&#x27;</span>,class_ = <span class="string">&#x27;comment-info&#x27;</span>).find_all(<span class="string">&#x27;span&#x27;</span>)[<span class="number">1</span>][<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">        comment = i.p.span.string</span><br><span class="line">        print(n,<span class="string">&#x27;:&#x27;</span>,name,fraction,comment,<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    start_time=time.time()  <span class="comment">#开始时间</span></span><br><span class="line">    pool = Pool()<span class="comment">#创建进程池</span></span><br><span class="line">    pool.map(request,[i*<span class="number">20</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)])</span><br><span class="line">    pool.close() <span class="comment"># 将进程池关闭，不再接受新的进程</span></span><br><span class="line">    pool.join() <span class="comment"># 主进程阻塞，只有池中所有进程都完毕了才会通过</span></span><br><span class="line">    end_time=time.time()   <span class="comment">#结束时间</span></span><br><span class="line">    print(<span class="string">&quot;time:%d&quot;</span>  % (end_time-start_time))  <span class="comment">#结束时间-开始时间 2s</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># start_time=time.time()  #开始时间</span></span><br><span class="line">    <span class="comment"># for i in range(10):</span></span><br><span class="line">    <span class="comment">#     request(i*20)</span></span><br><span class="line">    <span class="comment"># end_time=time.time()   #结束时间</span></span><br><span class="line">    <span class="comment"># print(&quot;time:%d&quot;  % (end_time-start_time))  #结束时间-开始时间 8s</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="补一个浏览器爬虫"><a href="#补一个浏览器爬虫" class="headerlink" title="补一个浏览器爬虫"></a>补一个浏览器爬虫</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> pyppeteer <span class="keyword">import</span> launch</span><br><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">模拟浏览器pyppeteer,pyquery选择器，京东爬虫</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">jingdong</span>():</span></span><br><span class="line">    browser = <span class="keyword">await</span> launch(headless=<span class="literal">False</span>)</span><br><span class="line">    page = <span class="keyword">await</span> browser.newPage()</span><br><span class="line">    <span class="keyword">await</span> page.goto(<span class="string">&quot;https://www.jd.com&quot;</span>)</span><br><span class="line"></span><br><span class="line">    input = <span class="keyword">await</span> page.querySelector(<span class="string">&#x27;#key&#x27;</span>)</span><br><span class="line">    <span class="keyword">await</span> input.type(<span class="string">&#x27;手机&#x27;</span>)</span><br><span class="line">    <span class="keyword">await</span> page.keyboard.press(<span class="string">&#x27;Enter&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> page.waitForSelector(<span class="string">&#x27;ul.gl-warp.clearfix&gt;li&#x27;</span>)</span><br><span class="line">    <span class="comment">#list = await page.querySelectorAll(&#x27;ul.gl-warp.clearfix&gt;li&#x27;)</span></span><br><span class="line">    list = <span class="keyword">await</span> page.JJeval(<span class="string">&#x27;ul.gl-warp.clearfix&gt;li&#x27;</span>, <span class="string">&#x27;(nodes =&gt; nodes.map(n =&gt; n.innerText))&#x27;</span>)<span class="comment">#使用puppeteer中的方法提取相应的文字内容</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">        print(i)</span><br><span class="line">    <span class="keyword">await</span> browser.close()</span><br><span class="line">    <span class="keyword">return</span> list</span><br><span class="line">list = asyncio.get_event_loop().run_until_complete(jingdong())</span><br></pre></td></tr></table></figure>
+<h2 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h2><p>本来应该加一个scrapy之类的爬虫的，但是他是个框架，算求！</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/1423014472.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/1313052387.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB"><span class="toc-number">1.</span> <span class="toc-text">一个图片爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87Ajax"><span class="toc-number">2.</span> <span class="toc-text">图片Ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E5%8D%9A%E4%BF%A1%E6%81%AF%E7%88%AC%E8%99%AB"><span class="toc-number">3.</span> <span class="toc-text">微博信息爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xpath"><span class="toc-number">4.</span> <span class="toc-text">Xpath</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E6%B7%BB%E5%8A%A0%E8%BF%9B%E7%A8%8B%E6%B1%A0"><span class="toc-number">5.</span> <span class="toc-text">爬虫添加进程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E4%B8%80%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E7%88%AC%E8%99%AB"><span class="toc-number">6.</span> <span class="toc-text">补一个浏览器爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scrapy"><span class="toc-number">7.</span> <span class="toc-text">scrapy</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
