@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>git - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,作为一个编程的人，时刻面临者代码管理的问题，当你的代码随着你的进度不断变多，但又不想放弃以前的版本的时候，对于其他人来说可能会选择保存多次来记录进度，但是git座椅版本控制工具就能为版本管理提供帮助,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">git</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">git</h1>
+        <div class="stuff">
+            <span>九月 23, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/git/" rel="tag">-'git'</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>作为一个编程的人，时刻面临者代码管理的问题，当你的代码随着你的进度不断变多，但又不想放弃以前的版本的时候，对于其他人来说可能会选择保存多次来记录进度，但是git座椅版本控制工具就能为版本管理提供帮助。<br>当我们需要做版本的控制，进度的记录，团队的开发等复杂工作的时候，git能够很好的帮我们理清思路，做出相应的记录。占用极少的空间，达到最大的效率。当然，如果我们在此基础上能够有一个专门存放代码的地方，让代码不与其他文件重合，互相干扰，想必是极好的。由此诞生了托管中心的概念。托管中心可以理解成百度云这样的工具，但是只做代码管理，在内网与外网有不同的选择。</p>
+<ul>
+<li><strong>内网：可以自己搭建一个GitLab服务器</strong><ul>
+<li><strong>外网：可以使用码云、Github</strong></li>
+</ul>
+</li>
+</ul>
+<p>而git也不是唯一的版本控制工具，以集中式与分布式区分：</p>
+<ul>
+<li><strong>集中式</strong>：CSV ,<strong>SVN</strong>,VSS</li>
+<li><strong>分布式</strong>：<strong>Git</strong>，Darcs,…</li>
+</ul>
+<h2 id="以下是Git命令行操作"><a href="#以下是Git命令行操作" class="headerlink" title="以下是Git命令行操作"></a>以下是Git命令行操作</h2><h3 id="本地库初始化"><a href="#本地库初始化" class="headerlink" title="本地库初始化"></a>本地库初始化</h3><p>初始化的目的相当于声明，声明这个文件夹作为我们管理文件了，管理的记录也只限于这一个文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line"><span class="comment"># 注意：生成的 .git 目录中存放的是本地库相关文件，不要删除</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a>设置签名</h3><ul>
+<li><p>项目(仓库)级别<code>仅在当前本地库有效</code></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name tom  <span class="comment">#设置用户名tom</span></span><br><span class="line">git config user.email liu@qq.com <span class="comment">#设置用户邮箱</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>系统用户级别<code>仅在当前登录的操作系统用户有效</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name tom</span><br><span class="line">git config --global user.email liu@qq.com</span><br></pre></td></tr></table></figure>
+<p>两者需要注意</p>
+<blockquote>
+<ul>
+<li>仅有一个 <code>--global</code>的区别</li>
+<li>优先级别：<code>项目级别</code>  &gt;  <code>系统级别</code></li>
+<li>信息保存位置：<code>~/.gitconfig 文件</code>   </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><h4 id="状态查看"><a href="#状态查看" class="headerlink" title="状态查看"></a>状态查看</h4><p>做版本管理首先需要查看文件状态是否被管理，该命令能够帮你显示文件当前状态，是否被管理或修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status   <span class="comment">#查看工作区、暂存区状态</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><p>添加的含义在于选中你想要管理的文件将文件添加到暂存区，暂存区的文件还未做版本管理，此刻只相当于声明这个文件是我的候选文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名字  <span class="comment">#指定文件</span></span><br><span class="line">git add . <span class="comment">#所有</span></span><br><span class="line"><span class="comment"># 说明：将工作区的文件添加到暂存区</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><p>提交既做版本管理，声明这个文件已经纳入工作完成进度当中，你可以给文件做出相应的描述，方便你理解这个文件的完成进度或者实现功能。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&#x27;commit message&#x27;</span> fileName</span><br><span class="line"><span class="comment"># 说明：将暂存区内容提交到本地库</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h4><p>当版本开发到一定程度的时候，需要回看历史版本开发进度，可以用以下命名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> </span><br><span class="line">git reflog  <span class="comment">#常用</span></span><br><span class="line">git <span class="built_in">log</span> --greph <span class="comment">#图形显示,更直观</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment">#漂亮一行显示</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment">#简洁显示</span></span><br><span class="line"><span class="comment"># 说明：HEAD@&#123;移动到当前版本需要多少步&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="前进与后退到你想要的版本"><a href="#前进与后退到你想要的版本" class="headerlink" title="前进与后退到你想要的版本"></a>前进与后退到你想要的版本</h4><ul>
+<li><p>基于索引值<code>推荐</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 指针位置</span><br><span class="line"><span class="comment"># 例子：git reset --hard a6ace91 #回到这个状态</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <strong>^</strong> 符号<code>只能后退</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br><span class="line"><span class="comment"># 例子：git reset --hard HEAD^^</span></span><br><span class="line"><span class="comment"># 注意：几个 ^ 表示后退几步</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <strong>~</strong> 符号<code>只能后退</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD~n</span><br><span class="line">例子：git reset --hard HEAD~3</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="reset的三个参数比较"><a href="#reset的三个参数比较" class="headerlink" title="reset的三个参数比较"></a>reset的三个参数比较</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">soft: </span><br><span class="line">  - 仅本地库移动HEAD 指针</span><br><span class="line">mixed:</span><br><span class="line">  - 在本地库移动HEAD指针</span><br><span class="line">  - 重置暂存区</span><br><span class="line">hard:</span><br><span class="line">  - 在本地库移动HEAD指针</span><br><span class="line">  - 重置暂存区</span><br><span class="line">  - 重置工作区</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除文件并找回"><a href="#删除文件并找回" class="headerlink" title="删除文件并找回"></a>删除文件并找回</h4><ul>
+<li>相当于建立一个快照，虽然删除了，但只要添加到暂存区，就能找回**</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 指针位置</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件差异比较"><a href="#文件差异比较" class="headerlink" title="文件差异比较"></a>文件差异比较</h4><p>用于比较两个文件的易同，可以检查文件的差异，找出自己想要的版本文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff 文件名</span><br><span class="line">git diff 哈希值 文件名  <span class="comment">#和历史中的一个版本比较</span></span><br><span class="line">git diff  <span class="comment">#不带文件名，则比较多个文件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p><code>hot_fix</code> <code>master</code> <code>feature_x</code> <code>feature_y</code></p>
+<h4 id="什么是分支管理"><a href="#什么是分支管理" class="headerlink" title="什么是分支管理"></a>什么是分支管理</h4><ul>
+<li>在版本控制中，使用推进多个任务，在分支管理的好处当中，我们保留我们的主进度，在分支当中开发我们的程序，完成之后并入主进度，这样能够防止文件开发过程当中出现混乱影响主要进度的开发。</li>
+</ul>
+<h4 id="分支的好处"><a href="#分支的好处" class="headerlink" title="分支的好处"></a>分支的好处</h4><ul>
+<li>同时并行推进多个功能开发，提高开发效率</li>
+<li>某一分支开发失败，不会对其它分支有任何影响</li>
+</ul>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><p>查看历史纪录的时候也能够看到分支的出现，帮你理解当前的进度</p>
+<ul>
+<li><p>创建分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br><span class="line">git branch -v </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br><span class="line">git checkout -b 分支名   <span class="comment">#创建分支并直接切换到该分支</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并分支<code>相当于把修改了的文件拉过来</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git merge xxx</span><br><span class="line">注意：合并分支的时候要明确谁谁合并</span><br><span class="line">	我在a分支里面修改了。要合并到master，就先切换到master，然后合并b</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><ul>
+<li>冲突的表现</li>
+<li>冲突的解决<ul>
+<li>第一步：编辑，删除特殊标记<code>&lt;&lt;&lt;</code> <code>===</code></li>
+<li>第二步：修改到满意位置，保存退出</li>
+<li>第三步：添加到缓存区  <code>git  add 文件名</code></li>
+<li>第四步：提交到本地库<code>git commit -m &#39;日志信息&#39; </code>  <code>注意：后面一定不能带文件名</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Git-结合Github"><a href="#Git-结合Github" class="headerlink" title="Git 结合Github"></a>Git 结合Github</h2><p><strong>github介绍</strong>：GitHub是一个面向开源及私有软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名GitHub。<br>GitHub于2008年4月10日正式上线，除了Git代码仓库托管及基本的 Web管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。目前，其注册用户已经超过350万，托管版本数量也是非常之多，其中不乏知名开源项目 Ruby on Rails、jQuery、python 等。<br><strong>来源：百度百科</strong><br>你可以理解成这是一个只支持存储项目文件的云端，且能够通过git远程操作。在进行以下操作之前，请先保证有一个GitHub账号，并且创建了一个仓库。</p>
+<h4 id="创建远程库地址别名"><a href="#创建远程库地址别名" class="headerlink" title="创建远程库地址别名"></a>创建远程库地址别名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v  <span class="comment">#查看远程地址别名</span></span><br><span class="line">git remote add 别名 远程地址 </span><br><span class="line"><span class="comment"># 例子：git remote add origin https://xx</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><p><code>开发修改完把本地库的文件推送到远程仓库</code> <code>前提是提交到了本地库才可以推送</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push 别名 分支名</span><br><span class="line">git push -u 别名 分支名    <span class="comment">#-u指定默认主机</span></span><br><span class="line"><span class="comment"># 例子：git push origin master</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="克隆-下载"><a href="#克隆-下载" class="headerlink" title="克隆(下载)"></a>克隆(下载)</h4><p><code>完整的把远程库克隆(下载)到本地</code>  <code>克隆下来后不要在主分支里面做开发</code> <code>clone进行一次，从无到有的过程，更新用pull</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span>  远程地址</span><br><span class="line"><span class="comment"># 例子：git clone https://xx</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><p>  <code>本地存在clone下来的文件  就用pull更新</code>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pull = fetch + merge</span><br><span class="line">	git fetch 别名 分支名</span><br><span class="line">	git merge 别名 分支名</span><br><span class="line">git pull 别名 分支名</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决冲突-1"><a href="#解决冲突-1" class="headerlink" title="解决冲突"></a>解决冲突</h4><p><code>注意：解决冲突后的提交是不能带文件名的</code></p>
+<p><code>如果不是基于远程库最新版做的修改不能推送，必须先pull下来安装冲突办法解决</code></p>
+<h4 id="rebase-变基"><a href="#rebase-变基" class="headerlink" title="rebase(变基)"></a>rebase(变基)</h4><p>rebase的目的是让git记录更加简洁</p>
+<blockquote>
+<ul>
+<li>1、将多个提交记录整合成一个记录</li>
+</ul>
+</blockquote>
+<ul>
+<li>版本号<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i 版本号 <span class="comment">#以当前版本号开始到现在为止的所有记录合并</span></span><br></pre></td></tr></table></figure></li>
+<li>数量<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3 <span class="comment">#以当前版本之前的3条记录合并成一条记录</span></span><br></pre></td></tr></table></figure>
+注：回车之后有提示信息，根据提示信息进行修改，尽量合并那些还没有被合并到版本库当中的文件。</li>
+</ul>
+<blockquote>
+<ul>
+<li>2、将分支融入进master当中<br>当开发的时候生成了一个分支，主分支也在同步开发，然后两个分支合并在一起，在用图形查看的时候，就会发现图上多了一个分支，然后融合会主线的过程，开发显得不再是一条线了，当分支越多，这个过程越为复杂。因此为了使得记录显示高效，需要想办法把分支完全融入主线。</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git chekcout 分支名字 <span class="comment">#进入分支</span></span><br><span class="line">git rebase master <span class="comment"># 将master内容拿过来</span></span><br><span class="line">git chekout master <span class="comment"># 回到主线</span></span><br><span class="line">git merge 分支名字 <span class="comment"># 合并</span></span><br><span class="line">git <span class="built_in">log</span> --graph --pretty=format:<span class="string">&quot;%h %s&quot;</span> <span class="comment"># 查看</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>3、当远程仓库进度超越本地进度的时候<br>当远程仓库超越本地记录，直接pull会令开发产生分叉，因此不能用pull</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin dev</span><br><span class="line">git rebase origin/dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="beyond-compare"><a href="#beyond-compare" class="headerlink" title="beyond compare"></a>beyond compare</h4><p><code>用软件解决冲突</code> </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.安装 ：</span><br><span class="line">	beyond compare </span><br><span class="line">2.配置：</span><br><span class="line">    git config --local merge.tool bc3  #合并名称</span><br><span class="line">    git config --local mergetool.path &#39;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;bcomp&#39; #软件路径</span><br><span class="line">    git config --local mergetool.keepBackup false  #False不用保存备份</span><br><span class="line">3.应用：</span><br><span class="line">	git mergetool</span><br><span class="line">说明：--local指只在当前操作系统有效</span><br></pre></td></tr></table></figure>
+
+<h4 id="跨团队合作"><a href="#跨团队合作" class="headerlink" title="跨团队合作"></a>跨团队合作</h4><p><code>代码review之后合并</code></p>
+<ul>
+<li><p><strong>适用于个人</strong></p>
+<p><strong>邀请成员</strong>:<code>Settings</code> –&gt; <code>Collaborators</code> –&gt;<code>填写用户名</code> –&gt;<code>打开链接接受邀请</code></p>
+</li>
+<li><p><strong>企业</strong>   <code>创建一个组织</code> <code>方便管理</code></p>
+</li>
+<li><p><strong>review</strong></p>
+<p>  <code>组织做review</code>  <code>通过Pull request</code></p>
+</li>
+<li><p><strong>给开源社区共享代码</strong></p>
+<p>  <code>点击别人仓库的fork 到自己的仓库</code>   – &gt; <code>然后clone下来 修改后推送到远程库</code>  –&gt; <code>点击Pull Request请求</code> –&gt; <code>Create pull request发消息</code></p>
+</li>
+</ul>
+<h4 id="Tag标签"><a href="#Tag标签" class="headerlink" title="Tag标签"></a>Tag标签</h4><p><code>为了清晰的版本管理，公司一般不会直接使用commit提交</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.0 -m <span class="string">&#x27;版本介绍&#x27;</span>   <span class="comment">#创建本地tag信息</span></span><br><span class="line">git tag -d v1.0    		<span class="comment">#删除tag</span></span><br><span class="line">git push origin --tags   <span class="comment">#将本地tag信息推送到远程库</span></span><br><span class="line">git pull origin --tags    <span class="comment">#拉取到本地</span></span><br><span class="line"></span><br><span class="line">git checkout v.10    <span class="comment">#切换tag</span></span><br><span class="line">git <span class="built_in">clone</span> -b v0.1 地址   <span class="comment">#指定tag下载代码</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="SSH-免密登录"><a href="#SSH-免密登录" class="headerlink" title="SSH 免密登录"></a>SSH 免密登录</h4><ul>
+<li>输入:<code>ssh-keygen -t rsa -C GitHub邮箱地址</code>  </li>
+<li>进入<code>.ssh</code>目录，复制<code>id_rsa.pub</code>文件内容</li>
+<li>登录GitHub。<code>Settings</code>  –&gt; <code>SSH and GPG keys </code> –&gt; <code>New SSH Key    </code></li>
+<li>回到git通过ssh地址创建。<code>git remote add 别名 SSH地址  </code></li>
+</ul>
+<h2 id="Git工作流"><a href="#Git工作流" class="headerlink" title="Git工作流"></a>Git工作流</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在项目开发过程中使用Git的方式</span><br></pre></td></tr></table></figure>
+
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><h5 id="集中式工作流"><a href="#集中式工作流" class="headerlink" title="集中式工作流"></a>集中式工作流</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">像SVN一样，集中式工作流有一个中央仓库，所有的修改都提交到了Master分支上</span><br></pre></td></tr></table></figure>
+
+<h5 id="GitFlow工作流"><a href="#GitFlow工作流" class="headerlink" title="GitFlow工作流 *"></a>GitFlow工作流 <code>*</code></h5><p>主干分支<code>master</code>  开发分支<code>develop</code>  修复分支<code>hotfix</code>   预发布分支<code>release</code>  功能分支<code>feature</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GitFlow 有独立的分支，让发布迭代过程更流畅。</span><br></pre></td></tr></table></figure>
+
+<h5 id="Forking-工作流"><a href="#Forking-工作流" class="headerlink" title="Forking 工作流"></a>Forking 工作流</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 GitFlow 基础上， 充分利用了 Git 的 Fork 和 pull request 的功能以达到代码审核的目的。 </span><br><span class="line">安全可靠地管理大团队的开发者</span><br></pre></td></tr></table></figure>
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/1423014472.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/1313052387.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E6%98%AFGit%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">以下是Git命令行操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">本地库初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%AD%BE%E5%90%8D"><span class="toc-number">1.2.</span> <span class="toc-text">设置签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">状态查看</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0"><span class="toc-number">1.3.2.</span> <span class="toc-text">添加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4"><span class="toc-number">1.3.3.</span> <span class="toc-text">提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="toc-number">1.3.4.</span> <span class="toc-text">查看历史记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%BF%9B%E4%B8%8E%E5%90%8E%E9%80%80%E5%88%B0%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.3.5.</span> <span class="toc-text">前进与后退到你想要的版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reset%E7%9A%84%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%E6%AF%94%E8%BE%83"><span class="toc-number">1.3.6.</span> <span class="toc-text">reset的三个参数比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%B9%B6%E6%89%BE%E5%9B%9E"><span class="toc-number">1.3.7.</span> <span class="toc-text">删除文件并找回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B7%AE%E5%BC%82%E6%AF%94%E8%BE%83"><span class="toc-number">1.3.8.</span> <span class="toc-text">文件差异比较</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.1.</span> <span class="toc-text">什么是分支管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.4.2.</span> <span class="toc-text">分支的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.3.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="toc-number">1.4.4.</span> <span class="toc-text">解决冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E7%BB%93%E5%90%88Github"><span class="toc-number">2.</span> <span class="toc-text">Git 结合Github</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%9C%B0%E5%9D%80%E5%88%AB%E5%90%8D"><span class="toc-number">2.0.1.</span> <span class="toc-text">创建远程库地址别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E9%80%81"><span class="toc-number">2.0.2.</span> <span class="toc-text">推送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8B%E9%9A%86-%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.0.3.</span> <span class="toc-text">克隆(下载)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%8F%96"><span class="toc-number">2.0.4.</span> <span class="toc-text">拉取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81-1"><span class="toc-number">2.0.5.</span> <span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rebase-%E5%8F%98%E5%9F%BA"><span class="toc-number">2.0.6.</span> <span class="toc-text">rebase(变基)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beyond-compare"><span class="toc-number">2.0.7.</span> <span class="toc-text">beyond compare</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C"><span class="toc-number">2.0.8.</span> <span class="toc-text">跨团队合作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tag%E6%A0%87%E7%AD%BE"><span class="toc-number">2.0.9.</span> <span class="toc-text">Tag标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSH-%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">2.0.10.</span> <span class="toc-text">SSH 免密登录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">Git工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">3.0.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">3.0.2.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.0.2.1.</span> <span class="toc-text">集中式工作流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GitFlow%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.0.2.2.</span> <span class="toc-text">GitFlow工作流 *</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Forking-%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.0.2.3.</span> <span class="toc-text">Forking 工作流</span></a></li></ol></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
