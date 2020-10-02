@@ -10,7 +10,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="望的个人博客,机器学习之数据预处理数据集Country|Age|Salary|Purchased—|—|—France|44|72000|NoSpain|27|48000|YesGermany|30|54000|,"> 
+    <meta name="description" content="望的个人博客,机器学习之数据预处理数据集
+
+
+Country
+Age
+Salary
+Purchased
+
+
+
+France
+44
+72000
+No
+
+
+Spain
+27
+48000
+Yes
+
+
+Germany
+3,"> 
     <meta name="author" content="Orion"> 
     <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -64,7 +87,76 @@
 
         </div>
         <div class="content markdown">
-            <h1 id="机器学习之数据预处理"><a href="#机器学习之数据预处理" class="headerlink" title="机器学习之数据预处理"></a>机器学习之数据预处理</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>Country|Age|Salary|Purchased<br>—|—|—<br>France|44|72000|No<br>Spain|27|48000|Yes<br>Germany|30|54000|No<br>Spain|38|61000|No<br>Germany|40||Yes<br>France|35|58000|Yes<br>Spain||52000|No<br>France|48|79000|Yes<br>Germany|50|83000|No<br>France|37|67000|Yes</p>
+            <h1 id="机器学习之数据预处理"><a href="#机器学习之数据预处理" class="headerlink" title="机器学习之数据预处理"></a>机器学习之数据预处理</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Age</th>
+<th>Salary</th>
+<th>Purchased</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>France</td>
+<td>44</td>
+<td>72000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>27</td>
+<td>48000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>30</td>
+<td>54000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>38</td>
+<td>61000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>40</td>
+<td></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>France</td>
+<td>35</td>
+<td>58000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td></td>
+<td>52000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>France</td>
+<td>48</td>
+<td>79000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>50</td>
+<td>83000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>France</td>
+<td>37</td>
+<td>67000</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
 <p>这是一个公司的客户信息</p>
 <p>** 数据预处理流程: 导入标准库-&gt;导入数据集-&gt;缺失数据处理-&gt;分类数据-&gt;将数据分为训练集和测试集-&gt;特征缩放**</p>
 <h2 id="导入标准库"><a href="#导入标准库" class="headerlink" title="导入标准库"></a>导入标准库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder,OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br></pre></td></tr></table></figure>
