@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Django-7 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,Django 常用过滤器介绍过滤器介绍个人理解，过滤器本身就是一些函数，只不过用法与我们常见的不一样而已，因此有了过滤器这个名字，这些函数更多的功能不是用来处理数据，数据的处理应当交给后端，这里过滤,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Django-7</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Django-7</h1>
+        <div class="stuff">
+            <span>十月 05, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Django/" rel="tag">Django</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Django-常用过滤器介绍"><a href="#Django-常用过滤器介绍" class="headerlink" title="Django 常用过滤器介绍"></a>Django 常用过滤器介绍</h1><h2 id="过滤器介绍"><a href="#过滤器介绍" class="headerlink" title="过滤器介绍"></a>过滤器介绍</h2><p>个人理解，过滤器本身就是一些函数，只不过用法与我们常见的不一样而已，因此有了过滤器这个名字，这些函数更多的功能不是用来处理数据，数据的处理应当交给后端，这里过滤器的作用应当是用来规范数据，让数据在前端展示的时候更加规范。</p>
+<h2 id="常用过滤器的介绍"><a href="#常用过滤器的介绍" class="headerlink" title="常用过滤器的介绍"></a>常用过滤器的介绍</h2><table>
+<thead>
+<tr>
+<th>内置过滤器函数</th>
+<th>使用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>value | add:10</td>
+<td>给value的值加上10</td>
+</tr>
+<tr>
+<td>date</td>
+<td>value | date:"Y-m-d H:i:s"</td>
+<td>把日期格式按照规定的格式化显示</td>
+</tr>
+<tr>
+<td>cut</td>
+<td>value | cut:'xx' </td>
+<td>奖value中的xx删掉</td>
+</tr>
+<tr>
+<td>capfirst</td>
+<td>value | capfirst </td>
+<td>Value首字母大写</td>
+</tr>
+<tr>
+<td>default</td>
+<td>value | default:"xx" </td>
+<td>值为false的时候使用默认值</td>
+</tr>
+<tr>
+<td>default_if_none</td>
+<td>value |default_if_none:"x" </td>
+<td>值为空的时候使用默认值</td>
+</tr>
+<tr>
+<td>dictsort</td>
+<td>value |dictsort:"key" </td>
+<td>值为字典的列表，按照key排序</td>
+</tr>
+<tr>
+<td>dictsortreversed</td>
+<td>value |dictsortreversed:"key" </td>
+<td>上边方法，反序</td>
+</tr>
+<tr>
+<td>first</td>
+<td>value |first </td>
+<td>返回列表中第一个索引值</td>
+</tr>
+<tr>
+<td>floatformat</td>
+<td>value | floatformat:2 </td>
+<td>保留小数点后两位</td>
+</tr>
+<tr>
+<td>join</td>
+<td>value | join:"x" </td>
+<td>类似python的’xxxx’.join(value)</td>
+</tr>
+<tr>
+<td>last</td>
+<td>value | last </td>
+<td>返回列表最后一个索引值</td>
+</tr>
+<tr>
+<td>length</td>
+<td>value | length </td>
+<td>返回值的长度</td>
+</tr>
+<tr>
+<td>divisibleby</td>
+<td>value | divisibleby:2 </td>
+<td>如果可以被2整除返回true</td>
+</tr>
+<tr>
+<td>length_is</td>
+<td>value | length_is:"2" </td>
+<td>如果长度是2返回true</td>
+</tr>
+<tr>
+<td>safe</td>
+<td>value | safe </td>
+<td>将字符串中的thml标签在前端安全显示</td>
+</tr>
+<tr>
+<td>random</td>
+<td>value | random </td>
+<td>随机列表中的一个值</td>
+</tr>
+<tr>
+<td>slice</td>
+<td>value | slice:"2" </td>
+<td>截取前两个字符</td>
+</tr>
+<tr>
+<td>slugify</td>
+<td>value | slugify </td>
+<td>值小写，单词用-分隔</td>
+</tr>
+<tr>
+<td>upper</td>
+<td>value | upper </td>
+<td>字符串大写</td>
+</tr>
+<tr>
+<td>urlize</td>
+<td>value | urlize </td>
+<td>字符串中链接可点击</td>
+</tr>
+<tr>
+<td>wordcount</td>
+<td>value | wordcount </td>
+<td>字符串中单词数</td>
+</tr>
+<tr>
+<td>timeuntil</td>
+<td>value | timeuntil </td>
+<td>距离当前日期的天数和小时数(未来)</td>
+</tr>
+</tbody></table>
+<h2 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h2><h3 id="视图代码"><a href="#视图代码" class="headerlink" title="视图代码"></a>视图代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> View</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">filter</span>(<span class="params">View</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,request</span>):</span></span><br><span class="line">        Dict = &#123;&#125;</span><br><span class="line">        Dict[<span class="string">&#x27;Str&#x27;</span>] = <span class="string">&quot;abc123456789&quot;</span></span><br><span class="line">        Dict[<span class="string">&quot;List&quot;</span>] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">        Dict[<span class="string">&quot;Int&quot;</span>] = <span class="number">60</span></span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">&quot;app/filter.html&quot;</span>,Dict)</span><br></pre></td></tr></table></figure>
+<p>这里我自定义了一些数据类型作为测试数据，更多数据我懒得定义了，算求了！<br>对了！filter其实是一个python的函数，有过滤的作用，我只是懒得想名字才取名字冲突的，使用的时候注意！</p>
+<h3 id="路由代码"><a href="#路由代码" class="headerlink" title="路由代码"></a>路由代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> .views <span class="keyword">import</span> filter</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;filter/&#x27;</span>,filter.as_view(),name = <span class="string">&quot;filter&quot;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="H5代码"><a href="#H5代码" class="headerlink" title="H5代码"></a>H5代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>filter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; Int | add:10 &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; Str | capfirst &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; Str | cut:&quot;abc&quot; &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; List | first &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; List | random &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;% raw %&#125; Str | last &#123;% endraw %&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="https://raw.githubusercontent.com/M42-Orion/imgfile/master/blog/Django-7/%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA.png" alt="结果"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/1438865533.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Django 常用过滤器介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">过滤器介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.</span> <span class="toc-text">常用过滤器的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E7%94%A8%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">具体用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">视图代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">路由代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#H5%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.3.</span> <span class="toc-text">H5代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">1.3.4.</span> <span class="toc-text">效果展示</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
