@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>多元线性回归 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,多元线性回归数据集部分展示
+
+
+R&amp;amp;DSpend
+Administration
+Marketing Spend
+State
+Profit
+
+
+
+165349.2
+136897.8
+47178,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">多元线性回归</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">多元线性回归</h1>
+        <div class="stuff">
+            <span>十月 04, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><h2 id="数据集部分展示"><a href="#数据集部分展示" class="headerlink" title="数据集部分展示"></a>数据集部分展示</h2><table>
+<thead>
+<tr>
+<th>R&amp;DSpend</th>
+<th>Administration</th>
+<th>Marketing Spend</th>
+<th>State</th>
+<th>Profit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>165349.2</td>
+<td>136897.8</td>
+<td>471784.1</td>
+<td>New York</td>
+<td>192261.83</td>
+</tr>
+<tr>
+<td>162597.7</td>
+<td>151377.59</td>
+<td>443898.53</td>
+<td>California</td>
+<td>191792.06</td>
+</tr>
+<tr>
+<td>153441.51</td>
+<td>101145.55</td>
+<td>407934.54</td>
+<td>Florida</td>
+<td>191050.39</td>
+</tr>
+<tr>
+<td>144372.41</td>
+<td>118671.85</td>
+<td>383199.62</td>
+<td>New York</td>
+<td>182901.99</td>
+</tr>
+<tr>
+<td>142107.34</td>
+<td>91391.77</td>
+<td>366168.42</td>
+<td>Florida</td>
+<td>166187.94</td>
+</tr>
+<tr>
+<td>131876.9</td>
+<td>99814.71</td>
+<td>362861.36</td>
+<td>New York</td>
+<td>156991.12</td>
+</tr>
+<tr>
+<td>134615.46</td>
+<td>147198.87</td>
+<td>127716.82</td>
+<td>California</td>
+<td>156122.51</td>
+</tr>
+<tr>
+<td>130298.13</td>
+<td>145530.06</td>
+<td>323876.68</td>
+<td>Florida</td>
+<td>155752.6</td>
+</tr>
+<tr>
+<td>120542.52</td>
+<td>148718.95</td>
+<td>311613.29</td>
+<td>New York</td>
+<td>152211.77</td>
+</tr>
+<tr>
+<td>123334.88</td>
+<td>108679.17</td>
+<td>304981.62</td>
+<td>California</td>
+<td>149759.96</td>
+</tr>
+<tr>
+<td>101913.08</td>
+<td>110594.11</td>
+<td>229160.95</td>
+<td>Florida</td>
+<td>146121.95</td>
+</tr>
+<tr>
+<td>100671.96</td>
+<td>91790.61</td>
+<td>249744.55</td>
+<td>California</td>
+<td>144259.4</td>
+</tr>
+<tr>
+<td>93863.75</td>
+<td>127320.38</td>
+<td>249839.44</td>
+<td>Florida</td>
+<td>141585.52</td>
+</tr>
+<tr>
+<td>91992.39</td>
+<td>135495.07</td>
+<td>252664.93</td>
+<td>California</td>
+<td>134307.35</td>
+</tr>
+</tbody></table>
+<h2 id="Multiple-Linear-Regression-Intuition-多元线性回归"><a href="#Multiple-Linear-Regression-Intuition-多元线性回归" class="headerlink" title="Multiple Linear Regression Intuition/多元线性回归"></a>Multiple Linear Regression Intuition/多元线性回归</h2><p>相比简单线性回归的公式<code>y = b₀ + b₁*X₁</code>,多元线性回归不过是加入了更多因变量<code>y = b₀ + b₁*X₁ + b₂*X₂ +...+bn*Xn</code></p>
+<h2 id="多元线性回归假设"><a href="#多元线性回归假设" class="headerlink" title="多元线性回归假设"></a>多元线性回归假设</h2><ul>
+<li>线性</li>
+<li>同方差性</li>
+<li>多元正态分布</li>
+<li>误差独立</li>
+<li>无多重共线性</li>
+</ul>
+<h2 id="关于虚拟变量"><a href="#关于虚拟变量" class="headerlink" title="关于虚拟变量"></a>关于虚拟变量</h2><p>在数据中我们可以看到有一列数据是state，如果我们将这一列处理为虚拟变量之后，将会生成三列分别是New York/California/Florida，这三列的数据我们只需要其中任何两列就能够推导出第三列，因此我们其实可以省去其中任意一列以此满足我们需要的条件，如果不省去可能会出现过度拟合的情况出现。</p>
+<h2 id="如何确认我们需要的因变量"><a href="#如何确认我们需要的因变量" class="headerlink" title="如何确认我们需要的因变量"></a>如何确认我们需要的因变量</h2><ul>
+<li>ALL—in：一次性投入所有自变量</li>
+<li>反向淘汰：对于每一自变量都对结果有影响，首先先全部投入进行自变量，然后检查这些自变量对结果的影响，剔除最小的直到满足我们的需求。</li>
+<li>顺向选择：对每一个自变量都进行线性回归，当这个线性回归满足我们的条件的时候我们才能将其加入我们的多元线性回归中，否则我们如果假如了一个无关变量就会对我们的预测产生影响。</li>
+<li>双向淘汰：这是对反向淘汰与顺向选择结合的过程</li>
+<li>信息量比较：对所有的模型进行打分，找出最佳模型（运算量太大）</li>
+</ul>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dataset = pd.read_csv(<span class="string">&quot;50_Startups.csv&quot;</span>)</span><br><span class="line">X = dataset.iloc[:,:<span class="number">-1</span>].values</span><br><span class="line">Y = dataset.iloc[:,<span class="number">-1</span>].values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder,OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:,<span class="number">-1</span>] = labelencoder_X.fit_transform(X[:,<span class="number">-1</span>])</span><br><span class="line"><span class="comment">#Y不需要转化</span></span><br><span class="line"></span><br><span class="line">onehotencoder = ColumnTransformer([(<span class="string">&quot;State&quot;</span>,OneHotEncoder(),[<span class="number">3</span>])],remainder=<span class="string">&quot;passthrough&quot;</span>)</span><br><span class="line">X = onehotencoder.fit_transform(X)</span><br><span class="line"></span><br><span class="line"><span class="comment">#防止虚拟变量陷阱，虚拟变量可以根据任意两个推论出第三个，因此我们可以去掉一列(仅在本实验中)</span></span><br><span class="line">X = X[:,<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size = <span class="number">0.2</span>,random_state = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="拟合"><a href="#拟合" class="headerlink" title="拟合"></a>拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line">regressor = LinearRegression()</span><br><span class="line">regressor.fit(X_train,Y_train)</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">y_pred = regressor.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Building the optimal model using Backward Elimination</span></span><br><span class="line"><span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm </span><br><span class="line">X_train = np.append(arr = np.ones((<span class="number">40</span>, <span class="number">1</span>)).astype(int), values = X_train, axis = <span class="number">1</span>)</span><br><span class="line">X_opt = X_train [:, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">X_opt = np.array(X_opt, dtype=float)</span><br><span class="line">regressor_OLS = sm.OLS(endog = Y_train, exog = X_opt).fit()</span><br><span class="line">regressor_OLS.summary()</span><br><span class="line">X_opt = X_train [:, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">X_opt = np.array(X_opt, dtype=float)</span><br><span class="line">regressor_OLS = sm.OLS(endog = Y_train, exog = X_opt).fit()</span><br><span class="line">regressor_OLS.summary()</span><br><span class="line">X_opt = X_train [:, [<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">X_opt = np.array(X_opt, dtype=float)</span><br><span class="line">regressor_OLS = sm.OLS(endog = Y_train, exog = X_opt).fit()</span><br><span class="line">regressor_OLS.summary()</span><br><span class="line">X_opt = X_train [:, [<span class="number">0</span>, <span class="number">3</span>, <span class="number">5</span>]]</span><br><span class="line">X_opt = np.array(X_opt, dtype=float)</span><br><span class="line">regressor_OLS = sm.OLS(endog = Y_train, exog = X_opt).fit()</span><br><span class="line">regressor_OLS.summary()</span><br><span class="line">X_opt = X_train [:, [<span class="number">0</span>, <span class="number">3</span>]]</span><br><span class="line">X_opt = np.array(X_opt, dtype=float)</span><br><span class="line">regressor_OLS = sm.OLS(endog = Y_train, exog = X_opt).fit()</span><br><span class="line">regressor_OLS.summary()</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/1411358329.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.</span> <span class="toc-text">多元线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E9%83%A8%E5%88%86%E5%B1%95%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">数据集部分展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiple-Linear-Regression-Intuition-%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.2.</span> <span class="toc-text">Multiple Linear Regression Intuition&#x2F;多元线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%81%87%E8%AE%BE"><span class="toc-number">1.3.</span> <span class="toc-text">多元线性回归假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%99%9A%E6%8B%9F%E5%8F%98%E9%87%8F"><span class="toc-number">1.4.</span> <span class="toc-text">关于虚拟变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E8%AE%A4%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E5%9B%A0%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.</span> <span class="toc-text">如何确认我们需要的因变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">数据预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%9F%E5%90%88"><span class="toc-number">1.7.</span> <span class="toc-text">拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.8.</span> <span class="toc-text">测试</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
