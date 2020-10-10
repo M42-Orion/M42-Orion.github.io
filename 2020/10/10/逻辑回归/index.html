@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>逻辑回归 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,逻辑回归之前总结都是线性回归，也就是说预测的结果都在一条连续的函数上，值随X轴有着不断变化的值。但是很多时候遇到的问题不是线性的，而是分类问题，比如预测东西卖还是不买，天气下雨还是不下雨，特朗普当选,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">逻辑回归</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">逻辑回归</h1>
+        <div class="stuff">
+            <span>十月 10, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><p>之前总结都是线性回归，也就是说预测的结果都在一条连续的函数上，值随X轴有着不断变化的值。但是很多时候遇到的问题不是线性的，而是分类问题，比如预测东西卖还是不买，天气下雨还是不下雨，特朗普当选还是不当选，主角死还是不死。这些都是分类问题且只是简单分为了两类，但是生活中肯定有很多问题不止两类，我也不想去讨论。</p>
+<h2 id="部分数据展示"><a href="#部分数据展示" class="headerlink" title="部分数据展示"></a>部分数据展示</h2><table>
+<thead>
+<tr>
+<th>User ID</th>
+<th>Gende</th>
+<th>Age</th>
+<th>EstimatedSalary</th>
+<th>Purchased</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>15624510</td>
+<td>Male</td>
+<td>19</td>
+<td>19000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15810944</td>
+<td>Male</td>
+<td>35</td>
+<td>20000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15668575</td>
+<td>Female</td>
+<td>26</td>
+<td>43000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15603246</td>
+<td>Female</td>
+<td>27</td>
+<td>57000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15804002</td>
+<td>Male</td>
+<td>19</td>
+<td>76000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15728773</td>
+<td>Male</td>
+<td>27</td>
+<td>58000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15598044</td>
+<td>Female</td>
+<td>27</td>
+<td>84000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15694829</td>
+<td>Female</td>
+<td>32</td>
+<td>150000</td>
+<td>1</td>
+</tr>
+<tr>
+<td>15600575</td>
+<td>Male</td>
+<td>25</td>
+<td>33000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15727311</td>
+<td>Female</td>
+<td>35</td>
+<td>65000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15570769</td>
+<td>Female</td>
+<td>26</td>
+<td>80000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15606274</td>
+<td>Female</td>
+<td>26</td>
+<td>52000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>15746139</td>
+<td>Male</td>
+<td>20</td>
+<td>86000</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h2 id="数据预处理-划分数据集-特征缩放"><a href="#数据预处理-划分数据集-特征缩放" class="headerlink" title="数据预处理/划分数据集/特征缩放"></a>数据预处理/划分数据集/特征缩放</h2><p>都没啥好说的了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dataset = pd.read_csv(<span class="string">&quot;Social_Network_Ads.csv&quot;</span>)</span><br><span class="line">X = dataset.iloc[:,[<span class="number">2</span>,<span class="number">3</span>]].values</span><br><span class="line">Y = dataset.iloc[:,<span class="number">4</span>].values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size = <span class="number">0.25</span>,random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">sc_X = StandardScaler()</span><br><span class="line">X_train = sc_X.fit_transform(X_train)</span><br><span class="line">X_test = sc_X.transform(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用逻辑回归函数"><a href="#使用逻辑回归函数" class="headerlink" title="使用逻辑回归函数"></a>使用逻辑回归函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">classifier = LogisticRegression(random_state = <span class="number">0</span>)</span><br><span class="line">classifier.fit(X_train,Y_train)</span><br><span class="line"></span><br><span class="line">Y_pred = classifier.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm = confusion_matrix(Y_test,Y_pred)</span><br><span class="line">cm</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[65,  3],</span><br><span class="line">       [ 8, 24]], dtype=int64)</span><br></pre></td></tr></table></figure>
+<p>计算准确率：(65+24)/100 = 0.89</p>
+<h2 id="生成图像"><a href="#生成图像" class="headerlink" title="生成图像"></a>生成图像</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> ListedColormap</span><br><span class="line">X_set,Y_set = X_train,Y_train</span><br><span class="line">x1,x2 = np.meshgrid(np.arange(start = X_set[:,<span class="number">0</span>].min() - <span class="number">1</span>,stop = X_set[:,<span class="number">0</span>].max() + <span class="number">1</span>,step = <span class="number">0.01</span>),</span><br><span class="line">                    np.arange(X_set[:,<span class="number">1</span>].min() - <span class="number">1</span>,stop = X_set[:,<span class="number">1</span>].max() + <span class="number">1</span>,step = <span class="number">0.01</span>))</span><br><span class="line">plt.contourf(x1,x2,classifier.predict(np.array([x1.ravel(),x2.ravel()]).T).reshape(x1.shape),alpha = <span class="number">0.75</span>,cmap = ListedColormap((<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;green&#x27;</span>)))</span><br><span class="line">plt.xlim(x1.min(),x1.max())</span><br><span class="line">plt.ylim(x2.min(),x2.max())</span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> enumerate(np.unique(Y_set)):</span><br><span class="line">    plt.scatter(X_set[Y_set == j,<span class="number">0</span>],X_set[Y_set == j,<span class="number">1</span>],c = ListedColormap((<span class="string">&#x27;orange&#x27;</span>,<span class="string">&#x27;blue&#x27;</span>))(i),label = j)</span><br><span class="line">plt.title(<span class="string">&#x27;Classifier Training set&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Age&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Estimated Salary&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="图像展示"><a href="#图像展示" class="headerlink" title="图像展示"></a>图像展示</h2><p><img src="https://raw.githubusercontent.com/M42-Orion/imgfile/master/blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/%E5%88%86%E7%B1%BB%E7%BB%93%E6%9E%9C.jpg" alt="结果"></p>
+<h2 id="有一个问题"><a href="#有一个问题" class="headerlink" title="有一个问题"></a>有一个问题</h2><p>逻辑回归并不像以上说得这么简单，涉及到一些公式的推导与证明，但是我作为使用者，我不想把那些公式跟推导写在这里，那些东西可以去很多地方找到，因此只需要简单记住，以前预测的都是一根线，现在预测是将数据进行分类处理，分类也不是只分两类，有很多种分类方法，好了，不写了，懒得写了！</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/1411358329.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">1.</span> <span class="toc-text">逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">部分数据展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86-%E5%88%92%E5%88%86%E6%95%B0%E6%8D%AE%E9%9B%86-%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE"><span class="toc-number">1.2.</span> <span class="toc-text">数据预处理&#x2F;划分数据集&#x2F;特征缩放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">使用逻辑回归函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="toc-number">1.4.</span> <span class="toc-text">混淆矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F"><span class="toc-number">1.5.</span> <span class="toc-text">生成图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%B1%95%E7%A4%BA"><span class="toc-number">1.6.</span> <span class="toc-text">图像展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text">有一个问题</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
