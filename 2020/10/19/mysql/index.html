@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mysql - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,MySQL数据库操作一点题外话，对数据库进行查询和修改操作的语言叫做 SQL（Structured Query Language，结构化查询语言）。SQL 语言是目前广泛使用的关系数据库标准语言，是,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">mysql</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">mysql</h1>
+        <div class="stuff">
+            <span>十月 19, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="MySQL数据库操作"><a href="#MySQL数据库操作" class="headerlink" title="MySQL数据库操作"></a>MySQL数据库操作</h1><p>一点题外话，对数据库进行查询和修改操作的语言叫做 SQL（Structured Query Language，结构化查询语言）。SQL 语言是目前广泛使用的关系数据库标准语言，是各种数据库交互方式的基础。那么Mysql中的my是什么意思呢？据互联网说，MySQL的发明者名叫 Michael “Monty” Widenius，MySQL是以他女儿的名字 “My” 来命名的。对这位发明者来说，MySQL数据库就仿佛是他可爱的女儿。  </p>
+<h2 id="SQL主体内容"><a href="#SQL主体内容" class="headerlink" title="SQL主体内容"></a>SQL主体内容</h2><blockquote>
+<p><strong>数据定义语言（Data Definition Language，DDL）</strong><br>用来创建或删除数据库以及表等对象，主要包含以下几种命令：</p>
+<blockquote>
+<p>DROP：删除数据库和表等对象<br>CREATE：创建数据库和表等对象<br>ALTER：修改数据库和表等对象的结构</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>数据操作语言（Data Manipulation Language，DML）</strong><br>用来变更表中的记录，主要包含以下几种命令：</p>
+<blockquote>
+<p>SELECT：查询表中的数据<br>INSERT：向表中插入新数据<br>UPDATE：更新表中的数据<br>DELETE：删除表中的数据</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>数据查询语言（Data Query Language，DQL）</strong><br>用来查询表中的记录，主要包含 SELECT 命令，来查询表中的数据。</p>
+</blockquote>
+<blockquote>
+<p><strong>数据控制语言（Data Control Language，DCL）</strong><br>用来确认或者取消对数据库中的数据进行的变更。除此之外，还可以对数据库中的用户设定权限。主要包含以下几种命令：</p>
+<blockquote>
+<p>GRANT：赋予用户操作权限<br>REVOKE：取消用户的操作权限<br>COMMIT：确认对数据库中的数据进行的变更<br>ROLLBACK：取消对数据库中的数据进行的变更</p>
+</blockquote>
+</blockquote>
+<h2 id="SQL注意事项"><a href="#SQL注意事项" class="headerlink" title="SQL注意事项"></a>SQL注意事项</h2><blockquote>
+<p><strong>SQL 语句要以分号;结尾</strong><br>在 RDBMS （关系型数据库）当中，SQL 语句是逐条执行的，一条 SQL 语句代表着数据库的一个操作。</p>
+</blockquote>
+<blockquote>
+<p><strong>SQL 不区分关键字的大小写</strong><br>提示：关键字是数据库事先定义的，有特别意义的单词。<br>需要注意的是，插入到表中的数据是区分大小写的。例如，向数据库中插入单词 Computer、COMPUTER 或 computer，这三个是不一样的数据</p>
+</blockquote>
+<blockquote>
+<p><strong>常数的书写方式是固定的</strong><br>SQL 语句常常需要直接书写字符串、日期或者数字。例如，书写向表中插入字符串、日期或者数字等数据的 SQL 语句。<br>注意：列名不是字符串，不能使用单引号。在MySQL 中可以用倒引号`把表名和列名括起来。<br>单词需要用半角空格或者换行来分隔</p>
+</blockquote>
+<blockquote>
+<p><strong>SQL 语句的单词之间必须使用半角空格（英文空格）或换行符来进行分隔</strong><br>没有分隔的语句会发生错误，无法正常执行。<br>下面是分隔和未分隔的 SQL 语句：<br>CREATE TABLE Product（正确）<br>CREATETABLE Product（错误）<br>CREATE TABLEProduct（错误）<br>不能使用全角空格（中文空格）作为单词的分隔符，否则会发生错误，出现无法预期的结果。<br>SQL 语句中的标点符号必须都是英文状态下的，即半角字。</p>
+</blockquote>
+<h2 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h2><h3 id="查看数据："><a href="#查看数据：" class="headerlink" title="查看数据："></a>查看数据：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>information_schema</td>
+</tr>
+<tr>
+<td>mysql</td>
+</tr>
+<tr>
+<td>performance_schema</td>
+</tr>
+<tr>
+<td>sys</td>
+</tr>
+<tr>
+<td>testdatabase</td>
+</tr>
+</tbody></table>
+<h3 id="创建一个新的数据库："><a href="#创建一个新的数据库：" class="headerlink" title="创建一个新的数据库："></a>创建一个新的数据库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE test_db;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br>|Database|<br>|—|<br>|information_schema|<br>|mysql|<br>|performance_schema|<br>|sys|<br>|test_db|<br>|testdatabase|</p>
+<h3 id="按照名字规则查询："><a href="#按照名字规则查询：" class="headerlink" title="按照名字规则查询："></a>按照名字规则查询：</h3><p>查询包含test字符串的数据库有哪些</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES LIKE <span class="string">&#x27;%test%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>|Database (%test%)|<br>|—|<br>|test_db|<br>|testdatabase|</p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在<strong>MySQL</strong>中，可以使用<strong>CREATE DATABASE</strong>语句创建数据库，语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE [IF NOT EXISTS] &lt;数据库名&gt;</span><br><span class="line">[[DEFAULT] CHARACTER SET &lt;字符集名&gt;] </span><br><span class="line">[[DEFAULT] COLLATE &lt;校对规则名&gt;];</span><br></pre></td></tr></table></figure>
+
+<p><strong>&lt;数据库名&gt;：</strong> 创建数据库的名称。M数据库名称必须符合操作系统的文件夹命名规则，不能以数字开头，尽量有实际意义。不区分大小写不建议乱写。<br><strong>IF NOT EXISTS：</strong> 创建之前判断这个数据库名字重复了没有，没有才创建。<br>如果创建了一个名为test的数据库，再创建一个名为test的数据库不加这一句话就会报：<code>ERROR 1007 (HY000): Can&#39;t create database &#39;test_db&#39;; database exists</code><br>**[DEFAULT] CHARACTER SET：** 指定数据库的字符集。指定字符集的目的是为了避免在数据库中存储的数据出现乱码的情况。如果在创建数据库时不指定字符集，那么就使用系统的默认字符集。<br>**[DEFAULT] COLLATE：** 指定字符集的默认校对规则。</p>
+<p><strong>一次完整的创建：</strong><br>命名为 test_db_char，指定其默认字符集为 utf8，默认校对规则为 utf8_chinese_ci（简体中文，不区分大小写）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE IF NOT EXISTS test_db_char</span><br><span class="line">    -&gt; DEFAULT CHARACTER SET utf8</span><br><span class="line">    -&gt; DEFAULT COLLATE utf8_chinese_ci;</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+
+<p>可以使用SHOW CREATE DATABASE查看 test_db_char 数据库的定义声明。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW CREATE DATABASE test_db_char;</span><br><span class="line">+--------------+-----------------------------------------------------+</span><br><span class="line">| Database     | Create Database                                     |</span><br><span class="line">+--------------+-----------------------------------------------------+</span><br><span class="line">| test_db_char | CREATE DATABASE `test_db_char` /*!40100 DEFAULT CHARACTER SET utf8 */ |</span><br><span class="line">+--------------+-----------------------------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>“1 row in set (0.00 sec)”表示集合中有 1 行信息，处理时间为 0.00秒。时间为 0.00 秒并不代表没有花费时间，而是时间非常短，小于 0.01 秒。</p>
+<h2 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h2><p>在 MySQL 中，可以使用 ALTER DATABASE 来修改已经被创建或者存在的数据库的相关参数。修改数据库的语法格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE [数据库名] &#123; </span><br><span class="line">[ DEFAULT ] CHARACTER SET &lt;字符集名&gt; |</span><br><span class="line">[ DEFAULT ] COLLATE &lt;校对规则名&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>语法说明如下：</p>
+<ul>
+<li>ALTER DATABASE 用于更改数据库的全局特性。</li>
+<li>使用 ALTER DATABASE 需要获得数据库 ALTER 权限。</li>
+<li>数据库名称可以忽略，此时语句对应于默认数据库。</li>
+<li>CHARACTER SET 子句用于更改默认的数据库字符集。</li>
+</ul>
+<p>一次完整的修改：<br>将数据库 test_db 的指定字符集修改为 gb2312，默认校对规则修改为 utf8_unicode_ci</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE test_db</span><br><span class="line">    -&gt; DEFAULT CHARACTER SET gb2312</span><br><span class="line">    -&gt; DEFAULT COLLATE gb2312_chinese_ci;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p>在<strong>MySQL</strong>中，当需要删除已创建的数据库时，可以使用<strong>DROP DATABASE</strong>语句。其语法格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE [ IF EXISTS ] &lt;数据库名&gt;</span><br></pre></td></tr></table></figure>
+<p>语法说明如下：</p>
+<ul>
+<li><strong>&lt;数据库名&gt;：</strong> 指定要删除的数据库名。</li>
+<li><strong>IF EXISTS：</strong> 用于防止当数据库不存在时发生错误。</li>
+<li><strong>DROP DATABASE：</strong> 删除数据库中的所有表格并同时删除数据库。使用此语句时要非常小心，以免错误删除。如果要使用 DROP DATABASE，需要获得数据库 DROP 权限。</li>
+</ul>
+<p>一次完整的删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE IF EXISTS <span class="built_in">test</span>;</span><br></pre></td></tr></table></figure>
+
+<p>还有一些细枝末节的东西，不想写一起了，反正也没什么重要的。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1423014472.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">MySQL数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E4%B8%BB%E4%BD%93%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.</span> <span class="toc-text">SQL主体内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.</span> <span class="toc-text">SQL注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">查看数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">查看数据：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">创建一个新的数据库：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%90%8D%E5%AD%97%E8%A7%84%E5%88%99%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">按照名字规则查询：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.4.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">修改数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">删除数据库</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mysql-2 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,数据库插入与查询……………本来应该按照官方教程一点点写的，但是先写理论一点都不爽，我打算便用边写，毕竟我又不出书。
+关系型数据库设计：三大范式的通俗理解目前关系数据库有六种范式：第一范式（1NF）、,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">mysql-2</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">mysql-2</h1>
+        <div class="stuff">
+            <span>十月 19, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="数据库插入与查询"><a href="#数据库插入与查询" class="headerlink" title="数据库插入与查询"></a>数据库插入与查询</h1><p>……………<br>本来应该按照官方教程一点点写的，但是先写理论一点都不爽，我打算便用边写，毕竟我又不出书。</p>
+<h2 id="关系型数据库设计：三大范式的通俗理解"><a href="#关系型数据库设计：三大范式的通俗理解" class="headerlink" title="关系型数据库设计：三大范式的通俗理解"></a>关系型数据库设计：三大范式的通俗理解</h2><p>目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。而通常我们用的最多的就是第一范式（1NF）、第二范式（2NF）、第三范式（3NF）。</p>
+<h3 id="第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。"><a href="#第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。" class="headerlink" title="第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。"></a>第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</h3><p>编号 | 信息<br>|—|—|<br>20150001 | 黄鑫,M<br>20150002 | 黄玉华,M<br>20150003 | 陈雪,W<br>20150004 | 王璐,M<br>20150005 | 崔成,W<br>20150006 | 鞠秀梅,M<br>20150007 | 段丽,M<br>20150008 | 穆柳,M<br>20150009 | 周建,W</p>
+<p>以上表格中，信息还能再被拆分成姓名跟性别。因此不符合第一范式。</p>
+<h3 id="第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）"><a href="#第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）" class="headerlink" title="第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）"></a>第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）</h3><p>第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>学生</th>
+<th>老师</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1741523821</td>
+<td>郭宇</td>
+<td>刘老师</td>
+</tr>
+<tr>
+<td>1749288183</td>
+<td>李建</td>
+<td>张老师</td>
+</tr>
+<tr>
+<td>1747196652</td>
+<td>李雪</td>
+<td>游老师</td>
+</tr>
+<tr>
+<td>1744749795</td>
+<td>张雪</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>1741692117</td>
+<td>曾博</td>
+<td>黄老师</td>
+</tr>
+</tbody></table>
+<p>以上表格中，老师与学生相关与主键学号无关，因此应该做成两个表，分别是学号学生表与学生老师表。</p>
+<h3 id="第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）"><a href="#第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）" class="headerlink" title="第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）"></a>第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）</h3><p>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
+<table>
+<thead>
+<tr>
+<th>货物订单号</th>
+<th>快递员姓名</th>
+<th>快递员工作编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0000000</td>
+<td>闻人翊悬</td>
+<td>584203817468</td>
+</tr>
+</tbody></table>
+<p>这个表中，快递员姓名与订单号相关，但是快递员编号却不是直接相关，因此要拆分成两个表。<br>至于数据为什么这么少，数据都是我编的，编数据太难了。</p>
+<h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">&#123;* | &lt;字段列名&gt;&#125;</span><br><span class="line">[</span><br><span class="line">    FROM &lt;表 1&gt;, &lt;表 2&gt;…</span><br><span class="line">        [WHERE &lt;表达式&gt;</span><br><span class="line">            [GROUP BY &lt;group by definition&gt;</span><br><span class="line">            [HAVING &lt;expression&gt; [&#123;&lt;operator&gt; &lt;expression&gt;&#125;…]</span><br><span class="line">        ]</span><br><span class="line">        [ORDER BY &lt;order by definition&gt;]</span><br><span class="line">        [LIMIT[&lt;offset&gt;,] &lt;row count&gt;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>其中，各条子句的含义如下：</p>
+<ul>
+<li>*<em>{</em>|&lt;字段列名&gt;}** 包含星号通配符的字段列表，表示所要查询字段的名称。</li>
+<li><strong>&lt;表 1&gt;，&lt;表 2&gt;…</strong> 表 1 和表 2 表示查询数据的来源，可以是单个或多个。</li>
+<li><strong>WHERE &lt;表达式&gt;</strong> 是可选项，如果选择该项，将限定查询数据必须满足该查询条件。</li>
+<li><strong>GROUP BY&lt; 字段 &gt;</strong> 该子句告诉 MySQL 如何显示查询出来的数据，并按照指定的字段分组。</li>
+<li><strong>[ORDER BY&lt; 字段 &gt;]</strong> 该子句告诉 MySQL 按什么样的顺序显示查询出来的数据，可以进行的排* 序有升序（ASC）和降序（DESC），默认情况下是升序。</li>
+<li><strong>[LIMIT[<offset>，]<row count>]</strong> 该子句告诉 MySQL 每次显示查询出来的数据条数。</li>
+</ul>
+<p>进行查询之前首先要创建表和插入数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student_info</span><br><span class="line">    (</span><br><span class="line">    id INT(11) UNSIGNED AUTO_INCREMENT,</span><br><span class="line">    name VARCHAR(25),</span><br><span class="line">    dept_Id INT UNSIGNED NOT NULL,</span><br><span class="line">    age INT ,</span><br><span class="line">    sex VARCHAR(1),</span><br><span class="line">    height int,</span><br><span class="line">    login_date date,</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">INSERT INTO student_info</span><br><span class="line">(name,dept_Id,age,sex,height,login_date) </span><br><span class="line">values   (<span class="string">&#x27;陈瑞&#x27;</span>, 1742091542, 19, <span class="string">&#x27;M&#x27;</span>, 188, <span class="string">&#x27;2020-10-17&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;童博&#x27;</span>, 1742968071, 18, <span class="string">&#x27;W&#x27;</span>, 169, <span class="string">&#x27;2020-10-18&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;黄建&#x27;</span>, 1748718466, 16, <span class="string">&#x27;W&#x27;</span>, 162, <span class="string">&#x27;2020-10-17&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;刘明&#x27;</span>, 1745723049, 16, <span class="string">&#x27;W&#x27;</span>, 164, <span class="string">&#x27;2020-10-12&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;朱佳&#x27;</span>, 1743070775, 17, <span class="string">&#x27;M&#x27;</span>, 179, <span class="string">&#x27;2020-10-10&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;兰建军&#x27;</span>, 1748466720, 16, <span class="string">&#x27;W&#x27;</span>, 170, <span class="string">&#x27;2020-10-07&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;郜刚&#x27;</span>, 1749322995, 19, <span class="string">&#x27;W&#x27;</span>, 162, <span class="string">&#x27;2020-10-03&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;李金凤&#x27;</span>, 1746976578, 18, <span class="string">&#x27;W&#x27;</span>, 153, <span class="string">&#x27;2020-10-06&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;唐秀云&#x27;</span>, 1745157993, 20, <span class="string">&#x27;M&#x27;</span>, 155, <span class="string">&#x27;2020-10-02&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;刘瑜&#x27;</span>, 1743029306, 19, <span class="string">&#x27;W&#x27;</span>, 186, <span class="string">&#x27;2020-10-13&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;高林&#x27;</span>, 1741547598, 18, <span class="string">&#x27;W&#x27;</span>, 171, <span class="string">&#x27;2020-10-09&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;林桂荣&#x27;</span>, 1744339933, 20, <span class="string">&#x27;W&#x27;</span>, 185, <span class="string">&#x27;2020-10-01&#x27;</span>)</span><br><span class="line">        ......</span><br><span class="line">        ,(<span class="string">&#x27;任小红&#x27;</span>, 1748868338, 16, <span class="string">&#x27;W&#x27;</span>, 181, <span class="string">&#x27;2020-10-01&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;张杰&#x27;</span>, 1747491170, 16, <span class="string">&#x27;M&#x27;</span>, 152, <span class="string">&#x27;2020-10-02&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;梅楠&#x27;</span>, 1747071775, 19, <span class="string">&#x27;W&#x27;</span>, 156, <span class="string">&#x27;2020-10-05&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;王建华&#x27;</span>, 1748492411, 20, <span class="string">&#x27;M&#x27;</span>, 163, <span class="string">&#x27;2020-10-08&#x27;</span>)</span><br><span class="line">        ,(<span class="string">&#x27;李倩&#x27;</span>, 1749802376, 17, <span class="string">&#x27;M&#x27;</span>, 177, <span class="string">&#x27;2020-10-18&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询表中所有字段"><a href="#查询表中所有字段" class="headerlink" title="查询表中所有字段"></a>查询表中所有字段</h3><p>查询所有字段是指查询表中所有字段的数据。MySQL 提供了以下 2 种方式查询表中的所有字段。<br>使用“*”通配符查询所有字段</p>
+<h4 id="列出表的所有字段"><a href="#列出表的所有字段" class="headerlink" title="列出表的所有字段"></a>列出表的所有字段</h4><ul>
+<li><p>*<em>使用“ * ”查询表的所有字段*</em><br>SELECT 可以使用“*”查找表中所有字段的数据，语法格式如下：<br><code>SELECT * FROM 表名;</code><br>使用“ * ”查询时，只能按照数据表中字段的顺序进行排列，不能改变字段的排列顺序。</p>
+<blockquote>
+<p>注意：一般情况下，<strong>除非需要使用表中所有的字段数据</strong>，否则最好不要使用通配符 “ * ”。虽然使用通配符可以节省输入查询语句的时间，但是获取不需要的列数据通常会<strong>降低查询和所使用的应用程序的效率</strong>。使用“ * ”的优势是，当不知道所需列的名称时，可以通过“ * ”获取它们。</p>
+</blockquote>
+</li>
+<li><p><strong>列出字段名查询</strong><br>SELECT 关键字后面的字段名为需要查找的字段，因此可以将表中所有字段的名称跟在 SELECT 关键字后面。如果忘记了字段名称，可以使用 DESC 命令查看表的结构。<br><code>SELECT 字段名 FROM tb_students_info;</code><br>虽然列出表的所有字段的方式比较灵活，但是查询所有字段时通常使用“ * ”通配符。使用“ * ”这种方式比较简单，尤其是表中的字段很多的时候，这种方式的优势更加明显。当然，如果需要改变字段显示的顺序，可以选择列出表的所有字段。</p>
+</li>
+</ul>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name,sex from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
+<p>查询前20条结果：<br>name | sex<br>— | —<br>小张 |    M<br>陈瑞 |    M<br>童博 |    W<br>黄建 |    W<br>刘明 |    W<br>朱佳 |    M<br>兰建军 |    W<br>郜刚 |    W<br>李金凤 |    W<br>唐秀云 |    M<br>刘瑜 |    W<br>高林 |    W<br>林桂荣 |    W<br>郭宇 |    M<br>李建 |    W<br>李雪 |    M<br>张雪 |    M<br>曾博 |    M<br>刘秀芳 |    W<br>黄鑫 |    M</p>
+<h2 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h2><p>在 MySQL 中使用 SELECT 语句执行简单的数据查询时，返回的是所有匹配的记录。如果表中的某些字段没有唯一性约束，那么这些字段就可能存在重复值。为了实现查询不重复的数据，MySQL 提供了 DISTINCT 关键字。</p>
+<p>DISTINCT 关键字的语法格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT &lt;字段名&gt; FROM &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>使用 DISTINCT 关键字时需要注意以下几点：</p>
+<ul>
+<li>DISTINCT 关键字只能在 SELECT 语句中使用。</li>
+<li>在对一个或多个字段去重时，DISTINCT 关键字必须在所有字段的最前面。</li>
+<li>如果 DISTINCT 关键字后有多个字段，则会对多个字段进行组合去重，也就是说，只有多个字段组合起来完全是一样的情况下才会被去重。</li>
+</ul>
+<h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select DISTINCT age from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
+<p>查询前20条结果：<br>|age|<br>|—|<br>|17|<br>|19|<br>|18|<br>|16|<br>|20|</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select  count(DISTINCT age) from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
+<p>查询前20条去重之后总数：<br>|count(DISTINCT age)|<br>|—|<br>|5|</p>
+<h2 id="为表指定别名"><a href="#为表指定别名" class="headerlink" title="为表指定别名"></a>为表指定别名</h2><p>当表名很长或者执行一些特殊查询的时候，为了方便操作，可以为表指定一个别名，用这个别名代替表原来的名称。</p>
+<h3 id="为表指定别名："><a href="#为表指定别名：" class="headerlink" title="为表指定别名："></a>为表指定别名：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;表名&gt; [AS] &lt;别名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中各子句的含义如下：</p>
+<ul>
+<li><strong>&lt;表名&gt;：</strong> 数据库中存储的数据表的名称。</li>
+<li><strong>&lt;别名&gt;：</strong> 查询时指定的表的新名称。</li>
+<li><strong>AS关键字可以省略：</strong> 省略后需要将表名和别名用空格隔开。</li>
+</ul>
+<p>在使用 SELECT 语句查询数据时，MySQL 会显示每个 SELECT 后面指定输出的字段。有时为了显示结果更加直观，我们可以为字段指定一个别名。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT stu.name,stu.height FROM My_New_School_2017_Math_2 AS stu;</span><br></pre></td></tr></table></figure>
+
+<h3 id="为字段指定别名："><a href="#为字段指定别名：" class="headerlink" title="为字段指定别名："></a>为字段指定别名：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;字段名&gt; [AS] &lt;别名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中，各子句的语法含义如下：</p>
+<ul>
+<li><strong>&lt;字段名&gt;：</strong> 为数据表中字段定义的名称。</li>
+<li><strong>&lt;字段别名&gt;：</strong> 字段新的名称。</li>
+<li><strong>AS关键字可以省略：</strong> 省略后需要将字段名和别名用空格隔开。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT student_name AS name, student_age AS age FROM My_New_School_2017_Math_2;</span><br></pre></td></tr></table></figure>
+
+<p>学习MySQL最恼火的事情不是说用语法，我觉得是找不到合适的数据给我玩，操！</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1423014472.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E5%85%A5%E4%B8%8E%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.</span> <span class="toc-text">数据库插入与查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%EF%BC%9A%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E7%9A%84%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">关系型数据库设计：三大范式的通俗理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F%EF%BC%881NF%EF%BC%89%EF%BC%9A%E8%A6%81%E6%B1%82%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%9A%84%E6%AF%8F%E4%B8%80%E5%88%97%E9%83%BD%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%88%86%E5%89%B2%E7%9A%84%E5%8E%9F%E5%AD%90%E6%95%B0%E6%8D%AE%E9%A1%B9%E3%80%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F%EF%BC%882NF%EF%BC%89%EF%BC%9A%E5%9C%A81NF%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%EF%BC%8C%E9%9D%9E%E7%A0%81%E5%B1%9E%E6%80%A7%E5%BF%85%E9%A1%BB%E5%AE%8C%E5%85%A8%E4%BE%9D%E8%B5%96%E4%BA%8E%E5%80%99%E9%80%89%E7%A0%81%EF%BC%88%E5%9C%A81NF%E5%9F%BA%E7%A1%80%E4%B8%8A%E6%B6%88%E9%99%A4%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%E5%AF%B9%E4%B8%BB%E7%A0%81%E7%9A%84%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%EF%BC%883NF%EF%BC%89%EF%BC%9A%E5%9C%A82NF%E5%9F%BA%E7%A1%80%E4%B8%8A%EF%BC%8C%E4%BB%BB%E4%BD%95%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%E4%B8%8D%E4%BE%9D%E8%B5%96%E4%BA%8E%E5%85%B6%E5%AE%83%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%EF%BC%88%E5%9C%A82NF%E5%9F%BA%E7%A1%80%E4%B8%8A%E6%B6%88%E9%99%A4%E4%BC%A0%E9%80%92%E4%BE%9D%E8%B5%96%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.</span> <span class="toc-text">数据查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%A1%A8%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5"><span class="toc-number">1.2.1.</span> <span class="toc-text">查询表中所有字段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">列出表的所有字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D"><span class="toc-number">1.3.</span> <span class="toc-text">去重</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-1"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E8%A1%A8%E6%8C%87%E5%AE%9A%E5%88%AB%E5%90%8D"><span class="toc-number">1.4.</span> <span class="toc-text">为表指定别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E8%A1%A8%E6%8C%87%E5%AE%9A%E5%88%AB%E5%90%8D%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">为表指定别名：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%AD%97%E6%AE%B5%E6%8C%87%E5%AE%9A%E5%88%AB%E5%90%8D%EF%BC%9A"><span class="toc-number">1.4.2.</span> <span class="toc-text">为字段指定别名：</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
