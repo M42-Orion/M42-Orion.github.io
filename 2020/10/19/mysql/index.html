@@ -123,11 +123,49 @@
 </tr>
 </tbody></table>
 <h3 id="创建一个新的数据库："><a href="#创建一个新的数据库：" class="headerlink" title="创建一个新的数据库："></a>创建一个新的数据库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE test_db;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>|Database|<br>|—|<br>|information_schema|<br>|mysql|<br>|performance_schema|<br>|sys|<br>|test_db|<br>|testdatabase|</p>
+<p>运行结果：</p>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>information_schema</td>
+</tr>
+<tr>
+<td>mysql</td>
+</tr>
+<tr>
+<td>performance_schema</td>
+</tr>
+<tr>
+<td>sys</td>
+</tr>
+<tr>
+<td>test_db</td>
+</tr>
+<tr>
+<td>testdatabase</td>
+</tr>
+</tbody></table>
 <h3 id="按照名字规则查询："><a href="#按照名字规则查询：" class="headerlink" title="按照名字规则查询："></a>按照名字规则查询：</h3><p>查询包含test字符串的数据库有哪些</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES LIKE <span class="string">&#x27;%test%&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<br>|Database (%test%)|<br>|—|<br>|test_db|<br>|testdatabase|</p>
+<p>运行结果：</p>
+<table>
+<thead>
+<tr>
+<th>Database (%test%)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>test_db</td>
+</tr>
+<tr>
+<td>testdatabase</td>
+</tr>
+</tbody></table>
 <h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在<strong>MySQL</strong>中，可以使用<strong>CREATE DATABASE</strong>语句创建数据库，语法格式如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE [IF NOT EXISTS] &lt;数据库名&gt;</span><br><span class="line">[[DEFAULT] CHARACTER SET &lt;字符集名&gt;] </span><br><span class="line">[[DEFAULT] COLLATE &lt;校对规则名&gt;];</span><br></pre></td></tr></table></figure>
 

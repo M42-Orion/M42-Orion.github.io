@@ -145,7 +145,95 @@
 </li>
 </ul>
 <h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name,sex from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
-<p>查询前20条结果：<br>name | sex<br>— | —<br>小张 |    M<br>陈瑞 |    M<br>童博 |    W<br>黄建 |    W<br>刘明 |    W<br>朱佳 |    M<br>兰建军 |    W<br>郜刚 |    W<br>李金凤 |    W<br>唐秀云 |    M<br>刘瑜 |    W<br>高林 |    W<br>林桂荣 |    W<br>郭宇 |    M<br>李建 |    W<br>李雪 |    M<br>张雪 |    M<br>曾博 |    M<br>刘秀芳 |    W<br>黄鑫 |    M</p>
+<p>查询前20条结果：</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>sex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小张</td>
+<td>M</td>
+</tr>
+<tr>
+<td>陈瑞</td>
+<td>M</td>
+</tr>
+<tr>
+<td>童博</td>
+<td>W</td>
+</tr>
+<tr>
+<td>黄建</td>
+<td>W</td>
+</tr>
+<tr>
+<td>刘明</td>
+<td>W</td>
+</tr>
+<tr>
+<td>朱佳</td>
+<td>M</td>
+</tr>
+<tr>
+<td>兰建军</td>
+<td>W</td>
+</tr>
+<tr>
+<td>郜刚</td>
+<td>W</td>
+</tr>
+<tr>
+<td>李金凤</td>
+<td>W</td>
+</tr>
+<tr>
+<td>唐秀云</td>
+<td>M</td>
+</tr>
+<tr>
+<td>刘瑜</td>
+<td>W</td>
+</tr>
+<tr>
+<td>高林</td>
+<td>W</td>
+</tr>
+<tr>
+<td>林桂荣</td>
+<td>W</td>
+</tr>
+<tr>
+<td>郭宇</td>
+<td>M</td>
+</tr>
+<tr>
+<td>李建</td>
+<td>W</td>
+</tr>
+<tr>
+<td>李雪</td>
+<td>M</td>
+</tr>
+<tr>
+<td>张雪</td>
+<td>M</td>
+</tr>
+<tr>
+<td>曾博</td>
+<td>M</td>
+</tr>
+<tr>
+<td>刘秀芳</td>
+<td>W</td>
+</tr>
+<tr>
+<td>黄鑫</td>
+<td>M</td>
+</tr>
+</tbody></table>
 <h2 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h2><p>在 MySQL 中使用 SELECT 语句执行简单的数据查询时，返回的是所有匹配的记录。如果表中的某些字段没有唯一性约束，那么这些字段就可能存在重复值。为了实现查询不重复的数据，MySQL 提供了 DISTINCT 关键字。</p>
 <p>DISTINCT 关键字的语法格式为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT &lt;字段名&gt; FROM &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
@@ -157,9 +245,41 @@
 <li>如果 DISTINCT 关键字后有多个字段，则会对多个字段进行组合去重，也就是说，只有多个字段组合起来完全是一样的情况下才会被去重。</li>
 </ul>
 <h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select DISTINCT age from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
-<p>查询前20条结果：<br>|age|<br>|—|<br>|17|<br>|19|<br>|18|<br>|16|<br>|20|</p>
+<p>查询前20条结果：</p>
+<table>
+<thead>
+<tr>
+<th>age</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17</td>
+</tr>
+<tr>
+<td>19</td>
+</tr>
+<tr>
+<td>18</td>
+</tr>
+<tr>
+<td>16</td>
+</tr>
+<tr>
+<td>20</td>
+</tr>
+</tbody></table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select  count(DISTINCT age) from testdatabase.student_info <span class="built_in">limit</span> 20;</span><br></pre></td></tr></table></figure>
-<p>查询前20条去重之后总数：<br>|count(DISTINCT age)|<br>|—|<br>|5|</p>
+<p>查询前20条去重之后总数：</p>
+<table>
+<thead>
+<tr>
+<th>count(DISTINCT age)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+</tr>
+</tbody></table>
 <h2 id="为表指定别名"><a href="#为表指定别名" class="headerlink" title="为表指定别名"></a>为表指定别名</h2><p>当表名很长或者执行一些特殊查询的时候，为了方便操作，可以为表指定一个别名，用这个别名代替表原来的名称。</p>
 <h3 id="为表指定别名："><a href="#为表指定别名：" class="headerlink" title="为表指定别名："></a>为表指定别名：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;表名&gt; [AS] &lt;别名&gt;</span><br></pre></td></tr></table></figure>
 
