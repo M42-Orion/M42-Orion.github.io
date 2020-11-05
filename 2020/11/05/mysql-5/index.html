@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mysql-5 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,在之前的学习中所学习的东西全是基于一个表查询的，但是MySQL毕竟是关系型数据库，表与表之间是有联系的，所以在实际应用中，经常使用多表查询。多表查询就是同时查询两个或两个以上的表。对于我来说，我不喜,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">mysql-5</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">mysql-5</h1>
+        <div class="stuff">
+            <span>十一月 05, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>在之前的学习中所学习的东西全是基于一个表查询的，但是MySQL毕竟是关系型数据库，表与表之间是有联系的，所以在实际应用中，经常使用多表查询。多表查询就是同时查询两个或两个以上的表。<br>对于我来说，我不喜欢的事情就是教程里面不完整，因为我无法复刻结果，所以我这次把数据一并写进去了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE worker_info</span><br><span class="line">    (</span><br><span class="line">    id INT(11) UNSIGNED AUTO_INCREMENT,</span><br><span class="line">    name VARCHAR(25),</span><br><span class="line">    work_Id INT UNSIGNED NOT NULL,</span><br><span class="line">    age INT ,</span><br><span class="line">    sex VARCHAR(1),</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">INSERT INTO worker_info</span><br><span class="line">(name,work_Id,age,sex)</span><br><span class="line">values </span><br><span class="line">(<span class="string">&#x27;陈瑞&#x27;</span>, 1742091542, 19, <span class="string">&#x27;M&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;童博&#x27;</span>, 1742968071, 18, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;黄建&#x27;</span>, 1748718466, 16, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;刘明&#x27;</span>, 1745723049, 16, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;朱佳&#x27;</span>, 1743070775, 17, <span class="string">&#x27;M&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;兰建军&#x27;</span>, 1748466720, 16, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;郜刚&#x27;</span>, 1749322995, 19, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;李金凤&#x27;</span>, 1746976578, 18, <span class="string">&#x27;W&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;唐秀云&#x27;</span>, 1745157993, 20, <span class="string">&#x27;M&#x27;</span>);</span><br><span class="line"></span><br><span class="line">CREATE TABLE job</span><br><span class="line">    (</span><br><span class="line">    name VARCHAR(25)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">INSERT INTO job</span><br><span class="line">(name)</span><br><span class="line">values</span><br><span class="line">(<span class="string">&quot;高级Java工程师&quot;</span>),</span><br><span class="line">(<span class="string">&quot;python实习生&quot;</span>),</span><br><span class="line">(<span class="string">&quot;python工程师&quot;</span>),</span><br><span class="line">(<span class="string">&quot;前端工程师&quot;</span>),</span><br><span class="line">(<span class="string">&quot;后端工程师&quot;</span>),</span><br><span class="line">(<span class="string">&quot;项目经理&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="CROSS-JOIN：交叉连接"><a href="#CROSS-JOIN：交叉连接" class="headerlink" title="CROSS JOIN：交叉连接"></a>CROSS JOIN：交叉连接</h1><p>交叉连接的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;字段名&gt; FROM &lt;表1&gt; CROSS JOIN &lt;表2&gt; [WHERE子句]</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;字段名&gt; FROM &lt;表1&gt;, &lt;表2&gt; [WHERE子句] </span><br></pre></td></tr></table></figure>
+<p>语法说明如下：</p>
+<ul>
+<li><strong>字段名：</strong> 需要查询的字段名称。</li>
+<li><strong>&lt;表1&gt;&lt;表2&gt;：</strong> 需要交叉连接的表名。</li>
+<li><strong>WHERE 子句：</strong> 用来设置交叉连接的查询条件。</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 多个表交叉连接时，在 FROM 后连续使用 CROSS JOIN 或 “,” 即可。以上两种语法的返回结果是相同的，但是第一种语法才是官方建议的标准写法。</p>
+</blockquote>
+<p>当连接的表之间没有关系时，我们会省略掉 WHERE 子句，这时返回结果就是两个表的笛卡尔积，返回结果数量就是两个表的数据行相乘。需要注意的是，如果每个表有 1000 行，那么返回结果的数量就有 1000×1000 = 1000000 行，数据量是非常巨大的。<br>以下将展示查询和CROSS JOIN的查询结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from worker_info;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p>id    |name|    work_Id|    age|    sex|<br>— | — |— | — | — | — |<br>1    |陈瑞|    1742091542|    19|    M|<br>2    |童博|    1742968071|    18|    W|<br>3    |黄建|    1748718466|    16|    W|<br>4    |刘明|    1745723049|    16|    W|<br>5    |朱佳|    1743070775|    17|    M|<br>6    |兰建军|    1748466720|    16|    W|<br>7    |郜刚|    1749322995|    19|    W|<br>8    |李金凤|    1746976578|    18|    W|<br>9    |唐秀云|    1745157993|    20|    M|</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from job;</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高级Java工程师</td>
+</tr>
+<tr>
+<td>python实习生</td>
+</tr>
+<tr>
+<td>python工程师</td>
+</tr>
+<tr>
+<td>前端工程师</td>
+</tr>
+<tr>
+<td>后端工程师</td>
+</tr>
+<tr>
+<td>项目经理</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from worker_info,job;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>id|    name|    work_Id|    age    |sex<br>— | — | — | — | —<br>1|    高级Java工程师|    1742091542|    19|    M<br>1|    python实习生|    1742091542|    19|    M<br>1|    python工程师|    1742091542|    19|    M<br>1|    前端工程师|    1742091542|    19|    M<br>1|    后端工程师|    1742091542|    19|    M<br>1|    项目经理|    1742091542|    19|    M<br>2|    高级Java工程师|    1742968071|    18|    W<br>2|    python实习生|    1742968071|    18|    W<br>2|    python工程师|    1742968071|    18|    W<br>2|    前端工程师|    1742968071|    18|    W<br>2|    后端工程师|    1742968071|    18|    W<br>2|    项目经理|    1742968071|    18|    W<br>3|    高级Java工程师|    1748718466|    16|    W<br>3|    python实习生|    1748718466|    16|    W<br>3|    python工程师|    1748718466|    16|    W<br>3|    前端工程师|    1748718466|    16|    W<br>3|    后端工程师|    1748718466|    16|    W<br>3|    项目经理|    1748718466|    16|    W<br>4|    高级Java工程师|    1745723049|    16|    W<br>4|    python实习生|    1745723049|    16|    W<br>4|    python工程师|    1745723049|    16|    W<br>4|    前端工程师|    1745723049|    16|    W<br>4|    后端工程师|    1745723049|    16|    W<br>4|    项目经理|    1745723049|    16|    W<br>5|    高级Java工程师|    1743070775|    17|    M<br>5|    python实习生|    1743070775|    17|    M<br>5|    python工程师|    1743070775|    17|    M<br>5|    前端工程师|    1743070775|    17|    M<br>5|    后端工程师|    1743070775|    17|    M<br>5|    项目经理|    1743070775|    17|    M<br>6|    高级Java工程师|    1748466720|    16|    W<br>6|    python实习生|    1748466720|    16|    W<br>6|    python工程师|    1748466720|    16|    W<br>6|    前端工程师|    1748466720|    16|    W<br>6|    后端工程师|    1748466720|    16|    W<br>6|    项目经理|    1748466720|    16|    W<br>7|    高级Java工程师|    1749322995|    19|    W<br>7|    python实习生|    1749322995|    19|    W<br>7|    python工程师|    1749322995|    19|    W<br>7|    前端工程师|    1749322995|    19|    W<br>7|    后端工程师|    1749322995|    19|    W<br>7|    项目经理|    1749322995|    19|    W<br>8|    高级Java工程师|    1746976578|    18|    W<br>8|    python实习生|    1746976578|    18|    W<br>8|    python工程师|    1746976578|    18|    W<br>8|    前端工程师|    1746976578|    18|    W<br>8|    后端工程师|    1746976578|    18|    W<br>8|    项目经理|    1746976578|    18|    W<br>9|    高级Java工程师|    1745157993|    20|    M<br>9|    python实习生|    1745157993|    20|    M<br>9|    python工程师|    1745157993|    20|    M<br>9|    前端工程师|    1745157993|    20|    M<br>9|    后端工程师|    1745157993|    20|    M<br>9|    项目经理|    1745157993|    20|    M</p>
+<p>可以看出来查询的结果非常多，在之后会说明笛卡尔积的原理与为什么会出现这么多。但是一般情况不会这么查询，我们会使用两个表中相同的字段做关联，假设存在一个职位id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE worker_info_test</span><br><span class="line">    (</span><br><span class="line">    id INT(11) UNSIGNED AUTO_INCREMENT,</span><br><span class="line">    name VARCHAR(25),</span><br><span class="line">    work_Id INT UNSIGNED NOT NULL,</span><br><span class="line">    age INT ,</span><br><span class="line">    job_id INT UNSIGNED NOT NULL,</span><br><span class="line">    sex VARCHAR(1),</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">    );</span><br><span class="line">INSERT INTO worker_info_test</span><br><span class="line">(name,work_Id,age,job_id,sex)</span><br><span class="line">values </span><br><span class="line">(<span class="string">&#x27;陈瑞&#x27;</span>, 1742091542, 19,1, <span class="string">&#x27;M&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;童博&#x27;</span>, 1742968071, 18,2, <span class="string">&#x27;W&#x27;</span>);</span><br><span class="line"></span><br><span class="line">CREATE TABLE job_test</span><br><span class="line">    (</span><br><span class="line">    name VARCHAR(25),</span><br><span class="line">    job_id INT UNSIGNED NOT NULL</span><br><span class="line">    );</span><br><span class="line">INSERT INTO job_test</span><br><span class="line">(name,job_id)</span><br><span class="line">values</span><br><span class="line">(<span class="string">&quot;高级Java工程师&quot;</span>,1),</span><br><span class="line">(<span class="string">&quot;python实习生&quot;</span>,2);</span><br><span class="line"></span><br><span class="line">select * from worker_info_test,job_test <span class="built_in">where</span> worker_info_test.job_id = job_test.job_id;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>work_Id</th>
+<th>age</th>
+<th>job_id</th>
+<th>sex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>高级Java工程师</td>
+<td>1742091542</td>
+<td>19</td>
+<td>1</td>
+<td>M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>python实习生</td>
+<td>1742968071</td>
+<td>18</td>
+<td>2</td>
+<td>W</td>
+</tr>
+<tr>
+<td>这样能极大程度的减少数量,这里我犯了个错误，就是在命名的时候姓名与职位全部命名为name，这是很不规矩的，所以查询出错了，应该在设计数据库的时候就注意这些问题。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h1><p>笛卡尔积（Cartesian product）是指两个集合 X 和 Y 的乘积。</p>
+<p>例如，有 A 和 B 两个集合，它们的值如下：<br>A = {1,2}<br>B = {3,4,5}<br>集合 A×B 和 B×A 的结果集分别表示为：<br>A×B={(1,3), (1,4), (1,5), (2,3), (2,4), (2,5) };<br>B×A={(3,1), (3,2), (4,1), (4,2), (5,1), (5,2) };</p>
+<p>以上 A×B 和 B×A 的结果就叫做两个集合的笛卡尔积。<br>并且，从以上结果我们可以看出：</p>
+<ul>
+<li>两个集合相乘，不满足交换率，即 A×B≠B×A。</li>
+<li>A 集合和 B 集合的笛卡尔积是 A 集合的元素个数 × B 集合的元素个数。<br>多表查询遵循的算法就是以上提到的笛卡尔积，表与表之间的连接可以看成是在做乘法运算。在实际应用中，应避免使用笛卡尔积，因为笛卡尔积中容易存在大量的不合理数据，简单来说就是容易导致查询结果重复、混乱。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1459950258.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CROSS-JOIN%EF%BC%9A%E4%BA%A4%E5%8F%89%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">CROSS JOIN：交叉连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">2.</span> <span class="toc-text">笛卡尔积</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
