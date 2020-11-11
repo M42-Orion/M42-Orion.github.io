@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HTTP协议 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,认识 HTTP听的最多的应该就是 HTTP 是一种 超文本传输协议(Hypertext Transfer Protocol) ,一听超文本…嗯….好像很熟悉, HTML(Hyper Text Mar,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">HTTP协议</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">HTTP协议</h1>
+        <div class="stuff">
+            <span>十一月 11, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="认识-HTTP"><a href="#认识-HTTP" class="headerlink" title="认识 HTTP"></a>认识 HTTP</h1><p>听的最多的应该就是 HTTP 是一种 <strong>超文本传输协议(Hypertext Transfer Protocol)</strong> ,一听超文本…嗯….好像很熟悉, <strong>HTML(Hyper Text Markup Language)</strong> 不就是超文本传输语言嘛!HTML就是一种通过HTTP协议传输的信息.<br>超文本传输协议可以进行文字分割： <strong>超文本（Hypertext）、传输（Transfer）、协议（Protocol）</strong> ，它们之间的关系如下:</p>
+<ul>
+<li>协议 包含 传输</li>
+<li>传输 包含 超文本  </li>
+</ul>
+<p>可以理解为在协议下传输超文本.</p>
+<h1 id="什么是超文本"><a href="#什么是超文本" class="headerlink" title="什么是超文本"></a>什么是超文本</h1><p>早期的时候，信息通常都以文本即简单字符的形式存在，文本是一种能够被计算机解析的有意义的二进制数据包。而随着互联网的高速发展，人们不满足只能在两台电脑之间传输文字，还想要传输图片、音频、视频，甚至点击文字或图片能够进行超链接的跳转，那么文本的语义就被扩大了，这种语义扩大后的文本就被称为 <strong>超文本(Hypertext)</strong> 。超文本是用超链接的方法，将各种不同空间的文字信息组织在一起的网状文本。超文本更是一种用户界面范式，用来显示文本及与文本之间相关的内容。现时超文本普遍以电子文档方式存在，其中的文字包含有可以链结到其他位置或者文档的连结，允许从当前阅读位置直接切换到超文本连结所指向的位置。我们日常浏览的网页上的链结都属于超文本。</p>
+<h1 id="什么是传输"><a href="#什么是传输" class="headerlink" title="什么是传输"></a>什么是传输</h1><p>两台计算机之间会形成互联关系进行通信，我们存储的超文本会被解析成为二进制数据包，由传输载体(网线)负责把二进制数据包由计算机终端传输到另一个终端的过程称为 <strong>传输(transfer)</strong> 。请求需要客户端与服务端同时运行,客户端常被成为 <strong>请求方</strong> ,服务端被成为 <strong>应答方</strong> .请求和应答方通过网络协议建立连接传输数据包,也通过协议断开连接.如TCP三次握手建立连接四次挥手断开连接.</p>
+<h1 id="什么是协议"><a href="#什么是协议" class="headerlink" title="什么是协议"></a>什么是协议</h1><p>在这里不是两个人或者公司签署的什么协议,而是 <strong>网络协议</strong> .<br>网络协议就是网络中(包括互联网)传递、管理信息的一些规范。如同人与人之间相互交流是需要遵循一定的规矩一样，计算机之间的相互通信需要共同遵守一定的规则，这些规则就称为网络协议。<br>没有网络协议的互联网是混乱的，世界上那么多人在使用互联网通信,在通信过程中肯定不能想当然的制定规则,只有统一规则才能够让通信变得流畅.所以综上所述: HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范.</p>
+<h1 id="与-HTTP-有关的组件"><a href="#与-HTTP-有关的组件" class="headerlink" title="与 HTTP 有关的组件"></a>与 HTTP 有关的组件</h1><h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><p>互联网是一个庞大的系统,但是组件并不庞大,我们可以将互联网抽象成网络模型,由应用程序、端系统、通信链路、分组交换机\协议组成.为了给网络协议的设计提供一个结构，网络设计者以 <strong>分层(layer)</strong> 的方式组织协议，每个协议属于层次模型之一。每一层都是向它的上一层提供 <strong>服务(service)</strong> ，即所谓的服务 <strong>模型(service model)</strong> 。每个分层中所有的协议称为 <strong>协议栈(protocol stack)</strong> 。因特网的协议栈由五个部分组成： <strong>物理层、链路层、网络层、运输层和应用层.</strong> </p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>应用层是网络应用程序和网络协议存放的分层，因特网的应用层包括许多协议，例如我们学 web 离不开的 HTTP，电子邮件传送协议 <strong>SMTP</strong> 、端系统文件上传协议 <strong>FTP</strong> 、还有为我们进行域名解析的 <strong>DNS</strong> 协议。应用层协议分布在多个端系统上，一个端系统应用程序与另外一个端系统应用程序交换信息分组，我们把位于应用层的信息分组称为 <strong>报文(message)</strong>.</p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><p>因特网的运输层在应用程序断点之间传送应用程序报文，在这一层主要有两种传输协议 <strong>TCP 和 UDP</strong> ，利用这两者中的任何一个都能够传输报文，不过这两种协议有巨大的不同。</p>
+<ul>
+<li>TCP 向它的应用程序提供了面向连接的服务，它能够控制并确认报文是否到达，并提供了拥塞机制来控制网络传输，因此当网络拥塞时，会抑制其传输速率。</li>
+<li>UDP 协议向它的应用程序提供了无连接服务。它不具备可靠性的特征，没有流量控制，也没有拥塞控制。我们把运输层的分组称为 <strong>报文段(segment)</strong></li>
+</ul>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>因特网的网络层负责将称为 <strong>数据报(datagram)</strong> 的网络分层从一台主机移动到另一台主机。网络层一个非常重要的协议是 IP 协议，所有具有网络层的因特网组件都必须运行 IP 协议，IP 协议是一种网际协议，除了 IP 协议外，网络层还包括一些其他网际协议和路由选择协议，一般把网络层就称为 IP 层，由此可知 IP 协议的重要性。</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><p>现在我们有应用程序通信的协议，有了给应用程序提供运输的协议，还有了用于约定发送位置的 IP 协议，那么如何才能真正的发送数据呢？为了将分组从一个节点（主机或路由器）运输到另一个节点，网络层必须依靠链路层提供服务。链路层的例子包括以太网、WiFi 和电缆接入的 DOCSIS 协议，因为数据从源目的地传送通常需要经过几条链路，一个数据包可能被沿途不同的链路层协议处理，我们把链路层的分组称为 帧(frame)</p>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>虽然链路层的作用是将帧从一个端系统运输到另一个端系统，而物理层的作用是将帧中的一个个 比特 从一个节点运输到另一个节点，物理层的协议仍然使用链路层协议，这些协议与实际的物理传输介质有关，例如，以太网有很多物理层协议：关于双绞铜线、关于同轴电缆、关于光纤等等。</p>
+<h1 id="HTTP-请求响应过程"><a href="#HTTP-请求响应过程" class="headerlink" title="HTTP 请求响应过程"></a>HTTP 请求响应过程</h1><p>当在浏览器中输入网址后，到底发生了什么事情？</p>
+<ul>
+<li>DNS服务器会首先进行域名的映射，找到访问<a target="_blank" rel="noopener" href="http://www.baidu.com所在的地址,然后http/">www.baidu.com所在的地址，然后HTTP</a> 客户端进程在 80 端口发起一个到服务器 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 的 TCP 连接（80 端口是 HTTP 的默认端口）。在客户和服务器进程中都会有一个套接字与其相连。</li>
+<li>HTTP 客户端通过它的套接字向服务器发送一个 HTTP 请求报文。该报文中包含了路径资源</li>
+<li>HTTP 服务器通过它的套接字接受该报文，进行请求的解析工作，并从其存储器(RAM 或磁盘)中检索出对象，然后把检索出来的对象进行封装，封装到 HTTP 响应报文中，并通过套接字向客户进行发送。</li>
+<li>HTTP 服务器随即通知 TCP 断开 TCP 连接，实际上是需要等到客户接受完响应报文后才会断开 TCP 连接。</li>
+<li>HTTP 客户端接受完响应报文后，TCP 连接会关闭。HTTP 客户端从响应中提取出报文中是一个 HTML 响应文件，并检查该 HTML 文件，然后循环检查报文中其他内部对象。</li>
+<li>检查完成后，HTTP 客户端会把对应的资源通过显示器呈现给用户。<br>至此，键入网址再按下回车的全过程就结束了。上述过程描述的是一种简单的请求-响应全过程，简单来说就是通过网址找到服务端,服务端通过检索资源打包返回的过程,而真实的请求-响应情况可能要比上面描述的过程复杂很多。</li>
+</ul>
+<h1 id="HTTP-请求特征"><a href="#HTTP-请求特征" class="headerlink" title="HTTP 请求特征"></a>HTTP 请求特征</h1><p>HTTP 进行分组传输是具有以下特征</p>
+<ul>
+<li>支持客户-服务器模式</li>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有 GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于 HTTP 协议简单，使得 HTTP 服务器的程序规模小，因而通信速度很快。</li>
+<li>灵活：HTTP 允许传输任意类型的数据对象。正在传输的类型由 Content-Type 加以标记。</li>
+<li>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>无状态：HTTP 协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。当然可以用session和cookies来解决无状态的问题.这就是后话了.</li>
+</ul>
+<h1 id="详解-HTTP-报文"><a href="#详解-HTTP-报文" class="headerlink" title="详解 HTTP 报文"></a>详解 HTTP 报文</h1><p>HTTP 协议主要由三大部分组成：</p>
+<ul>
+<li><strong>起始行（start line）：</strong> 描述请求或响应的基本信息；</li>
+<li><strong>头部字段（header）：</strong> 使用 key-value 形式更详细地说明报文；</li>
+<li><strong>消息正文（entity）：</strong> 实际传输的数据，它不一定是纯文本，可以是图片、视频等二进制数据。</li>
+</ul>
+<p>其中起始行和头部字段并成为 <strong>请求头</strong> 或者 <strong>响应头</strong> ，统称为 <strong>Header</strong> ；消息正文也叫做实体，称为 body。HTTP 协议规定每次发送的报文必须要有 Header，但是可以没有 body，也就是说头信息是必须的，实体信息可以没有。而且在 header 和 body 之间必须要有一个空行.<br>如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(起始行)</span><br><span class="line">GET &#x2F;hello.txt HTTP&#x2F;1.1</span><br><span class="line">(请求头部)</span><br><span class="line">User-Agent: curl&#x2F;7.16.3 libcurl&#x2F;7.16.3 OpenSSL&#x2F;0.9.7l zlib&#x2F;1.2.3</span><br><span class="line">Host: www.example.com</span><br><span class="line">Accept-Language: en, mi</span><br><span class="line">(空行)</span><br></pre></td></tr></table></figure>
+<p>报文是用普通 ASCII 文本书写的，每一行和下一行之间都会有换行，而且最后一行（请求头部后）再加上一个回车换行符。每个报文的起始行都是由三个字段组成：方法(GET)、URL 字段(/hello.txt)和 HTTP 版本(HTTP/1.1)字段。</p>
+<h1 id="HTTP-请求方法"><a href="#HTTP-请求方法" class="headerlink" title="HTTP 请求方法"></a>HTTP 请求方法</h1><ul>
+<li><strong>GET</strong> 获取资源，GET 方法用来请求访问已被 URI 识别的资源。指定的资源经服务器端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；</li>
+<li><strong>POST</strong> 传输实体，虽然 GET 方法也可以传输主体信息，但是便于区分，我们一般不用 GET 传输实体信息，反而使用 POST 传输实体信息，</li>
+<li><strong>PUT</strong> 传输文件，PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置。<br>但是，鉴于 HTTP 的 PUT 方法自身不带验证机制，任何人都可以上传文件 , 存在安全性问题，因此一般的 W eb 网站不使用该方法。若配合 W eb 应用程序的验证机制，或架构设计采用 REST（REpresentational State Transfer，表征状态转移）标准的同类 Web 网站，就可能会开放使用 PUT 方法。</li>
+<li><strong>HEAD</strong> 获得响应首部，HEAD 方法和 GET 方法一样，只是不返回报文主体部分。用于确认 URI 的有效性及资源更新的日期时间等。</li>
+<li><strong>DELETE</strong> 删除文件，DELETE 方法用来删除文件，是与 PUT 相反的方法。DELETE 方法按请求 URI 删除指定的资源。</li>
+<li><strong>OPTIONS</strong> 询问支持的方法，OPTIONS 方法用来查询针对请求 URI 指定的资源支持的方法。</li>
+<li><strong>TRACE</strong> 追踪路径，TRACE 方法是让 Web 服务器端将之前的请求通信环回给客户端的方法。</li>
+<li><strong>CONNECT</strong> 要求用隧道协议连接代理，CONNECT 方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行 TCP 通信。主要使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加 密后经网络隧道传输。</li>
+</ul>
+<h1 id="HTTP-的优点和缺点"><a href="#HTTP-的优点和缺点" class="headerlink" title="HTTP 的优点和缺点"></a>HTTP 的优点和缺点</h1><h2 id="HTTP-的优点"><a href="#HTTP-的优点" class="headerlink" title="HTTP 的优点"></a>HTTP 的优点</h2><h3 id="简单灵活易扩展"><a href="#简单灵活易扩展" class="headerlink" title="简单灵活易扩展"></a>简单灵活易扩展</h3><p>HTTP 最重要也是最突出的优点是 简单、灵活、易于扩展。<br>HTTP 的协议比较简单，它的主要组成就是 header + body，头部信息也是简单的文本格式，而且 HTTP 的请求报文根据英文也能猜出来个大概的意思，降低学习门槛，能够让更多的人研究和开发 HTTP 应用。<br>所以，在简单的基础上，HTTP 协议又多了灵活 和 易扩展 的优点。<br>HTTP 协议里的请求方法、URI、状态码、原因短语、头字段等每一个核心组成要素都没有被制定死，允许开发者任意定制、扩充或解释，给予了浏览器和服务器最大程度的信任和自由。</p>
+<h3 id="应用广泛、环境成熟"><a href="#应用广泛、环境成熟" class="headerlink" title="应用广泛、环境成熟"></a>应用广泛、环境成熟</h3><p>因为过于简单，普及，因此应用很广泛。因为 HTTP 协议本身不属于一种语言，它并不限定某种编程语言或者操作系统，所以天然具有跨语言、跨平台的优越性。而且，因为本身的简单特性很容易实现，所以几乎所有的编程语言都有 HTTP 调用库和外围的开发测试工具。<br>随着移动互联网的发展， HTTP 的触角已经延伸到了世界的每一个角落，从简单的 Web 页面到复杂的 JSON、XML 数据，从台式机上的浏览器到手机上的各种 APP、新闻、论坛、购物、手机游戏，你很难找到一个没有使用 HTTP 的地方。</p>
+<h3 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h3><p>无状态其实既是优点又是缺点。因为服务器没有记忆能力，所以就不需要额外的资源来记录状态信息，不仅实现上会简单一些，而且还能减轻服务器的负担，能够把更多的 CPU 和内存用来对外提供服务。</p>
+<h2 id="HTTP-的缺点"><a href="#HTTP-的缺点" class="headerlink" title="HTTP 的缺点"></a>HTTP 的缺点</h2><p>无状态<br>既然服务器没有记忆能力，它就无法支持需要连续多个步骤的事务操作。每次都得问一遍身份信息，不仅麻烦，而且还增加了不必要的数据传输量。由此出现了 Cookie 技术。</p>
+<h3 id="明文"><a href="#明文" class="headerlink" title="明文"></a>明文</h3><p>HTTP 协议里还有一把优缺点一体的双刃剑，就是明文传输。明文意思就是协议里的报文（准确地说是 header 部分）不使用二进制数据，而是用简单可阅读的文本形式。<br>对比 TCP、UDP 这样的二进制协议，它的优点显而易见，不需要借助任何外部工具，用浏览器、Wireshark 或者 tcpdump 抓包后，直接用肉眼就可以很容易地查看或者修改，为我们的开发调试工作带来极大的便利。<br>当然缺点也是显而易见的，就是不安全，可以被监听和被窥探。因为无法判断通信双方的身份，不能判断报文是否被更改过。</p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>HTTP 的性能不算差，但不完全适应现在的互联网，还有很大的提升空间。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1391101614.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86-HTTP"><span class="toc-number">1.</span> <span class="toc-text">认识 HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E6%96%87%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">什么是超文本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%A0%E8%BE%93"><span class="toc-number">3.</span> <span class="toc-text">什么是传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.</span> <span class="toc-text">什么是协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8E-HTTP-%E6%9C%89%E5%85%B3%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">与 HTTP 有关的组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.</span> <span class="toc-text">网络模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">5.2.</span> <span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82"><span class="toc-number">5.3.</span> <span class="toc-text">运输层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">5.4.</span> <span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">5.5.</span> <span class="toc-text">链路层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">5.6.</span> <span class="toc-text">物理层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%BF%87%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">HTTP 请求响应过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E8%AF%B7%E6%B1%82%E7%89%B9%E5%BE%81"><span class="toc-number">7.</span> <span class="toc-text">HTTP 请求特征</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3-HTTP-%E6%8A%A5%E6%96%87"><span class="toc-number">8.</span> <span class="toc-text">详解 HTTP 报文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">HTTP 请求方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">10.</span> <span class="toc-text">HTTP 的优点和缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">10.1.</span> <span class="toc-text">HTTP 的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%81%B5%E6%B4%BB%E6%98%93%E6%89%A9%E5%B1%95"><span class="toc-number">10.1.1.</span> <span class="toc-text">简单灵活易扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B9%BF%E6%B3%9B%E3%80%81%E7%8E%AF%E5%A2%83%E6%88%90%E7%86%9F"><span class="toc-number">10.1.2.</span> <span class="toc-text">应用广泛、环境成熟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81"><span class="toc-number">10.1.3.</span> <span class="toc-text">无状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">10.2.</span> <span class="toc-text">HTTP 的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%8E%E6%96%87"><span class="toc-number">10.2.1.</span> <span class="toc-text">明文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD"><span class="toc-number">10.2.2.</span> <span class="toc-text">性能</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
