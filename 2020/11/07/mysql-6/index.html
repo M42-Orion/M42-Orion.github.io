@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mysql-6 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,内连接内连接（INNER JOIN）主要通过设置连接条件的方式，来移除查询结果中某些数据行的交叉连接。简单来说，就是利用条件表达式来消除交叉连接的某些数据行。内连接使用INNER JOIN关键字连接,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">mysql-6</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">mysql-6</h1>
+        <div class="stuff">
+            <span>十一月 07, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h1><p>内连接（INNER JOIN）主要通过设置连接条件的方式，来<strong>移除</strong>查询结果中某些数据行的<strong>交叉连接</strong>。简单来说，就是利用条件表达式来消除交叉连接的某些数据行。内连接使用<strong>INNER JOIN</strong>关键字连接两张表，并使用 <strong>ON</strong> 子句来设置连接条件。如果没有连接条件，<strong>INNER JOIN</strong> 和 <strong>CROSS JOIN</strong> 在语法上是等同的，两者可以互换。</p>
+<p>内连接的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;字段名&gt; FROM &lt;表1&gt; INNER JOIN &lt;表2&gt; [ON子句]</span><br></pre></td></tr></table></figure>
+<p>语法说明如下。</p>
+<ul>
+<li><strong>字段名：</strong> 需要查询的字段名称。</li>
+<li><strong>&lt;表1&gt;&lt;表2&gt;：</strong> 需要内连接的表名。</li>
+<li><strong>INNER JOIN ：</strong> 内连接中可以省略 INNER 关键字，只用关键字 JOIN。</li>
+<li><strong>ON 子句：</strong> 用来设置内连接的连接条件。<blockquote>
+<p>INNER JOIN 也可以使用 WHERE 子句指定连接条件，但是 INNER JOIN … ON 语法是官方的标准写法，而且 WHERE 子句在某些时候会影响查询的性能。</p>
+</blockquote>
+</li>
+</ul>
+<p>多个表内连接时，在 FROM 后连续使用 INNER JOIN 或 JOIN 即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT s.name,c.course_name FROM tb_students_info s INNER JOIN tb_course c ON s.course_id = c.id;</span><br></pre></td></tr></table></figure>
+<p>对比</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM tb_course CROSS JOIN tb_students_info WHERE tb_students_info.course_id = tb_course.id;</span><br></pre></td></tr></table></figure>
+
+<h1 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h1><p>内连接的查询结果都是符合连接条件的记录，而外连接会先将连接的表分为基表和参考表，再以基表为依据返回满足和不满足条件的记录。外连接可以分为左外连接和右外连接，下面根据实例分别介绍左外连接和右外连接。</p>
+<h2 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h2><p>左外连接又称为左连接，使用 LEFT OUTER JOIN 关键字连接两个表，并使用 ON 子句来设置连接条件。<br>左连接的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;字段名&gt; FROM &lt;表1&gt; LEFT OUTER JOIN &lt;表2&gt; &lt;ON子句&gt;</span><br></pre></td></tr></table></figure>
+<p>语法说明如下。</p>
+<ul>
+<li><strong>字段名：</strong> 需要查询的字段名称。</li>
+<li><strong>&lt;表1&gt;&lt;表2&gt;：</strong> 需要左连接的表名。</li>
+<li><strong>LEFT OUTER JOIN：</strong> 左连接中可以省略 OUTER 关键字，只使用关键字 LEFT JOIN。</li>
+<li><strong>ON 子句：</strong> 用来设置左连接的连接条件，不能省略。</li>
+</ul>
+<p>上述语法中，“表1”为基表，“表2”为参考表。左连接查询时，可以查询出“表1”中的所有记录和“表2”中匹配连接条件的记录。如果“表1”的某行在“表2”中没有匹配行，那么在返回结果中，“表2”的字段值均为空值（NULL）。</p>
+<p>例 1<br>在进行左连接查询之前，我们先查看 tb_course 和 tb_students_info 两张表中的数据。SQL 语句和运行结果如下。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;mysql&gt; SELECT * FROM tb_course;</span><br><span class="line">&gt;+----+-------------+</span><br><span class="line">&gt;| id | course_name |</span><br><span class="line">&gt;+----+-------------+</span><br><span class="line">&gt;|  1 | Java        |</span><br><span class="line">&gt;|  2 | MySQL       |</span><br><span class="line">&gt;|  3 | Python      |</span><br><span class="line">&gt;|  4 | Go          |</span><br><span class="line">&gt;|  5 | C++         |</span><br><span class="line">&gt;|  6 | HTML        |</span><br><span class="line">&gt;+----+-------------+</span><br><span class="line">&gt;6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">&gt;mysql&gt; SELECT * FROM tb_students_info;</span><br><span class="line">&gt;+----+--------+------+------+--------+-----------+</span><br><span class="line">&gt;| id | name   | age  | sex  | height | course_id |</span><br><span class="line">&gt;+----+--------+------+------+--------+-----------+</span><br><span class="line">&gt;|  1 | Dany   |   25 | 男   |    160 |         1 |</span><br><span class="line">&gt;|  2 | Green  |   23 | 男   |    158 |         2 |</span><br><span class="line">&gt;|  3 | Henry  |   23 | 女   |    185 |         1 |</span><br><span class="line">&gt;|  4 | Jane   |   22 | 男   |    162 |         3 |</span><br><span class="line">&gt;|  5 | Jim    |   24 | 女   |    175 |         2 |</span><br><span class="line">&gt;|  6 | John   |   21 | 女   |    172 |         4 |</span><br><span class="line">&gt;|  7 | Lily   |   22 | 男   |    165 |         4 |</span><br><span class="line">&gt;|  8 | Susan  |   23 | 男   |    170 |         5 |</span><br><span class="line">&gt;|  9 | Thomas |   22 | 女   |    178 |         5 |</span><br><span class="line">&gt;| 10 | Tom    |   23 | 女   |    165 |         5 |</span><br><span class="line">&gt;| 11 | LiMing |   22 | 男   |    180 |         7 |</span><br><span class="line">&gt;+----+--------+------+------+--------+-----------+</span><br><span class="line">&gt;11 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在 tb_students_info 表和 tb_course 表中查询所有学生姓名和相对应的课程名称，包括没有课程的学生，SQL 语句和运行结果如下。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;mysql&gt; SELECT s.name,c.course_name FROM tb_students_info s LEFT OUTER JOIN tb_course c </span><br><span class="line">    -&gt; ON s.`course_id`=c.`id`;</span><br><span class="line">&gt;+--------+-------------+</span><br><span class="line">&gt;| name   | course_name |</span><br><span class="line">&gt;+--------+-------------+</span><br><span class="line">&gt;| Dany   | Java        |</span><br><span class="line">&gt;| Henry  | Java        |</span><br><span class="line">&gt;| NULL   | Java        |</span><br><span class="line">&gt;| Green  | MySQL       |</span><br><span class="line">&gt;| Jim    | MySQL       |</span><br><span class="line">&gt;| Jane   | Python      |</span><br><span class="line">&gt;| John   | Go          |</span><br><span class="line">&gt;| Lily   | Go          |</span><br><span class="line">&gt;| Susan  | C++         |</span><br><span class="line">&gt;| Thomas | C++         |</span><br><span class="line">&gt;| Tom    | C++         |</span><br><span class="line">&gt;| LiMing | NULL        |</span><br><span class="line">&gt;+--------+-------------+</span><br><span class="line">&gt;12 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>可以看到，运行结果显示了 12 条记录，name 为 LiMing 的学生目前没有课程，因为对应的 tb_course 表中没有该学生的课程信息，所以该条记录只取出了 tb_students_info 表中相应的值，而从 tb_course 表中取出的值为 NULL。</p>
+</blockquote>
+<h1 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h1><p>右外连接又称为右连接，右连接是左连接的反向连接。使用 RIGHT OUTER JOIN 关键字连接两个表，并使用 ON 子句来设置连接条件。<br>右连接的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;字段名&gt; FROM &lt;表1&gt; RIGHT OUTER JOIN &lt;表2&gt; &lt;ON子句&gt;</span><br></pre></td></tr></table></figure>
+<p>语法说明如下。</p>
+<ul>
+<li><strong>字段名：</strong> 需要查询的字段名称。</li>
+<li><strong>&lt;表1&gt;&lt;表2&gt;：</strong> 需要右连接的表名。</li>
+<li><strong>RIGHT OUTER JOIN：</strong> 右连接中可以省略 OUTER 关键字，只使用关键字 RIGHT JOIN。</li>
+<li><strong>ON 子句：</strong> 用来设置右连接的连接条件，不能省略。</li>
+</ul>
+<p>与左连接相反，右连接以“表2”为基表，“表1”为参考表。右连接查询时，可以查询出“表2”中的所有记录和“表1”中匹配连接条件的记录。如果“表2”的某行在“表1”中没有匹配行，那么在返回结果中，“表1”的字段值均为空值（NULL）。</p>
+<blockquote>
+<p>多个表左/右连接时，在 ON 子句后连续使用 LEFT/RIGHT OUTER JOIN 或 LEFT/RIGHT JOIN 即可。</p>
+</blockquote>
+<p>使用外连接查询时，一定要分清需要查询的结果，是需要显示左表的全部记录还是右表的全部记录，然后选择相应的左连接和右连接。</p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>子查询是 MySQL 中比较常用的查询方法，通过子查询可以实现多表查询。子查询指将一个查询语句嵌套在另一个查询语句中。子查询可以在 SELECT、UPDATE 和 DELETE 语句中使用，而且可以进行多层嵌套。在实际开发时，子查询经常出现在 WHERE 子句中。</p>
+<p>子查询在 WHERE 中的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE &lt;表达式&gt; &lt;操作符&gt; (子查询)</span><br></pre></td></tr></table></figure>
+<p>其中，操作符可以是比较运算符和 IN、NOT IN、EXISTS、NOT EXISTS 等关键字。</p>
+<h2 id="IN-NOT-IN"><a href="#IN-NOT-IN" class="headerlink" title="IN | NOT IN"></a>IN | NOT IN</h2><p>当表达式与子查询返回的结果集中的某个值相等时，返回 TRUE，否则返回 FALSE；若使用关键字 NOT，则返回值正好相反。</p>
+<h2 id="EXISTS-NOT-EXISTS"><a href="#EXISTS-NOT-EXISTS" class="headerlink" title="EXISTS | NOT EXISTS"></a>EXISTS | NOT EXISTS</h2><p>用于判断子查询的结果集是否为空，若子查询的结果集不为空，返回 TRUE，否则返回 FALSE；若使用关键字 NOT，则返回的值正好相反。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT name FROM tb_students_info </span><br><span class="line">    -&gt; WHERE course_id IN (SELECT id FROM tb_course WHERE course_name = <span class="string">&#x27;Java&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>同等于</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT id FROM tb_course </span><br><span class="line">    -&gt; WHERE course_name = <span class="string">&#x27;Java&#x27;</span>;</span><br><span class="line">mysql&gt; SELECT name FROM tb_students_info </span><br><span class="line">    -&gt; WHERE course_id IN (1);</span><br></pre></td></tr></table></figure>
+
+<h2 id="查询注意事项"><a href="#查询注意事项" class="headerlink" title="查询注意事项"></a>查询注意事项</h2><p>在完成较复杂的数据查询时，经常会使用到子查询，编写子查询语句时，要注意如下事项。</p>
+<h3 id="子查询语句可以嵌套在-SQL-语句中任何表达式出现的位置"><a href="#子查询语句可以嵌套在-SQL-语句中任何表达式出现的位置" class="headerlink" title="子查询语句可以嵌套在 SQL 语句中任何表达式出现的位置"></a>子查询语句可以嵌套在 SQL 语句中任何表达式出现的位置</h3><p>在 SELECT 语句中，子查询可以被嵌套在 SELECT 语句的列、表和查询条件中，即 SELECT 子句，FROM 子句、WHERE 子句、GROUP BY 子句和 HAVING 子句。</p>
+<p>前面已经介绍了 WHERE 子句中嵌套子查询的使用方法，下面是子查询在 SELECT 子句和 FROM 子句中的使用语法。</p>
+<p>嵌套在 SELECT 语句的 SELECT 子句中的子查询语法格式如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT (子查询) FROM 表名;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>提示：子查询结果为单行单列，但不必指定列别名。</p>
+</blockquote>
+<p>嵌套在 SELECT 语句的 FROM 子句中的子查询语法格式如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM (子查询) AS 表的别名;</span><br></pre></td></tr></table></figure>
+<p>注意：必须为表指定别名。一般返回多行多列数据记录，可以当作一张临时表。</p>
+<h3 id="只出现在子查询中而没有出现在父查询中的表不能包含在输出列中"><a href="#只出现在子查询中而没有出现在父查询中的表不能包含在输出列中" class="headerlink" title="只出现在子查询中而没有出现在父查询中的表不能包含在输出列中"></a>只出现在子查询中而没有出现在父查询中的表不能包含在输出列中</h3><p>多层嵌套子查询的最终数据集只包含父查询（即最外层的查询）的 SELECT 子句中出现的字段，而子查询的输出结果通常会作为其外层子查询数据源或用于数据判断匹配。</p>
+<p>常见错误如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM (SELECT * FROM result);</span><br></pre></td></tr></table></figure>
+<p>这个子查询语句产生语法错误的原因在于主查询语句的 FROM 子句是一个子查询语句，因此应该为子查询结果集指定别名。正确代码如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM (SELECT * FROM result) AS Temp;</span><br></pre></td></tr></table></figure>
+
+<p>MySQL还有很多知识，类似于正在表达式、修改、删除 、处理异常、底层原理等等，但是我不想在这里把所有的知识点全部写出来，太多了，以后用的时候慢慢看吧。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="http://link.hhtjim.com/163/1459950258.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">内连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">外连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.1.</span> <span class="toc-text">左连接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">右连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">子查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IN-NOT-IN"><span class="toc-number">4.1.</span> <span class="toc-text">IN | NOT IN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXISTS-NOT-EXISTS"><span class="toc-number">4.2.</span> <span class="toc-text">EXISTS | NOT EXISTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.3.</span> <span class="toc-text">查询注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E5%8F%AF%E4%BB%A5%E5%B5%8C%E5%A5%97%E5%9C%A8-SQL-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E4%BB%BB%E4%BD%95%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">4.3.1.</span> <span class="toc-text">子查询语句可以嵌套在 SQL 语句中任何表达式出现的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD%E8%80%8C%E6%B2%A1%E6%9C%89%E5%87%BA%E7%8E%B0%E5%9C%A8%E7%88%B6%E6%9F%A5%E8%AF%A2%E4%B8%AD%E7%9A%84%E8%A1%A8%E4%B8%8D%E8%83%BD%E5%8C%85%E5%90%AB%E5%9C%A8%E8%BE%93%E5%87%BA%E5%88%97%E4%B8%AD"><span class="toc-number">4.3.2.</span> <span class="toc-text">只出现在子查询中而没有出现在父查询中的表不能包含在输出列中</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
