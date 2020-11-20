@@ -10,8 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="望的个人博客,modelORM
-全称：object relational mapping,通过使用ORM，可以直接用python调用数据库，通过把表映射成类，把行作为是例，把字段作为属性，ORM在执行对象操作的时,"> 
+    <meta name="description" content="望的个人博客,ORM
+全称：object relational mapping,通过使用ORM，可以直接用python调用数据库，通过把表映射成类，把行作为是例，把字段作为属性，ORM在执行对象操作的时候会把对应,"> 
     <meta name="author" content="Orion"> 
     <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -65,17 +65,115 @@
 
         </div>
         <div class="content markdown">
-            <h1 id="model"><a href="#model" class="headerlink" title="model"></a>model</h1><h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><ul>
-<li>全称：object relational mapping,通过使用ORM，可以直接用python调用数据库，通过把表映射成类，把行作为是例，把字段作为属性，ORM在执行对象操作的时候会把对应的操作转化成数据库原生语句的方式来完成数据库开发工作。</li>
+            <h1 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h1><ul>
+<li>全称：object relational mapping,通过使用ORM，可以直接用python调用数据库，通过把表映射成类，把行作为是例，把字段作为属性，ORM在执行对象操作的时候会<strong>把对应的操作转化成数据库原生语句</strong>的方式来完成数据库开发工作。</li>
 </ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><ul>
 <li>使用简单,通过将数据库语法进行封装,直接使用方法即可操作数据库。</li>
 <li>性能好,在通过orm转换成sql的时候是会有一些消耗,但这个消耗其实非常低,在对整体业务提升的角度说,这点消耗可以忽略不计,除非你对于io操作的要求非常的极端。</li>
 <li>兼容性好，支持目前市面上多数的关系型数据库，如MySQL、prestresql、salite等。</li>
 </ul>
-<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1.在 settings.py中设置数据库信息(需提前在数据库中创建库)<br>2.在应用app的models.py中以类的形式定义模型.<br>3.通过模型在目标数据库中创建对应的表.<br>4.在视图函数中通过对模型的操作实现目标数据库的读写操作.</p>
+<h1 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h1><p>1.在 settings.py中设置数据库信息(需提前在数据库中创建库)<br>2.在应用app的models.py中以类的形式定义模型.<br>3.通过模型在目标数据库中创建对应的表.<br>4.在视图函数中通过对模型的操作实现目标数据库的读写操作.</p>
 <p>！！！ 以上都是官方知识，我觉得就是以前是建表现在是建类，以前是查询，现在是方法。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;blog&#x27;</span>,<span class="comment">#数据库名称</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,<span class="comment">#数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;&#x27;</span>,<span class="comment">#数据库密码</span></span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;&#x27;</span>,<span class="comment">#数据库主机，留空默认为本地</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="string">&#x27;3306&#x27;</span>,<span class="comment">#数据库端口</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>这里使用的MySQL进行开发,首先创建好项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python django-admin startproject sqltest</span><br><span class="line"><span class="built_in">cd</span> sqltest</span><br><span class="line">python manage.py startapp app</span><br></pre></td></tr></table></figure>
+<p>开始配置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;blog&#x27;</span>,<span class="comment">#数据库名称</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,<span class="comment">#数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;&#x27;</span>,<span class="comment">#数据库密码</span></span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;&#x27;</span>,<span class="comment">#数据库主机，留空默认为本地也就是localhost</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="string">&#x27;3306&#x27;</span>,<span class="comment">#数据库端口默认</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="书写"><a href="#书写" class="headerlink" title="书写"></a>书写</h1><p>首先我们要操作<code>models.py</code>这个文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models <span class="comment">#导入类</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>(<span class="params">models.Model</span>):</span><span class="comment">#定义一个模型，models.Model不用管，是固定参数</span></span><br><span class="line">    name = models.CharField(max_length = <span class="number">20</span>)<span class="comment">#这里就定义了一个名字叫做name,类型为Char且长度为 20 的一个类型</span></span><br></pre></td></tr></table></figure>
+<p>当创建完这个模型之后我们要运行两个命令分别是:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python manage.py makemigrations</span><br></pre></td></tr></table></figure>
+<p>与</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python manage.py migrate</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong> 在执行这两个命令之前必须手动在数据库中创建好对应的数据库。</p>
+</blockquote>
+<p>第一个命令可以在migrate文件夹下生成initial.py脚本文件，第二个命令则会执行这个脚本文件，生成相应的数据表。在执行完这两行命令之后在数据库中生成了一下表：</p>
+<table>
+<thead>
+<tr>
+<th>Tables_in_testdjango</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app_test</td>
+</tr>
+<tr>
+<td>auth_group</td>
+</tr>
+<tr>
+<td>auth_group_permissions</td>
+</tr>
+<tr>
+<td>auth_permission</td>
+</tr>
+<tr>
+<td>auth_user</td>
+</tr>
+<tr>
+<td>auth_user_groups</td>
+</tr>
+<tr>
+<td>auth_user_user_permissions</td>
+</tr>
+<tr>
+<td>django_admin_log</td>
+</tr>
+<tr>
+<td>django_content_type</td>
+</tr>
+<tr>
+<td>django_migrations</td>
+</tr>
+<tr>
+<td>django_session</td>
+</tr>
+</tbody></table>
+<p>先不管其他的表，其他的表都是系统生成的，这里自定义的表在app_test当中，使用MySQL命令<code>desc app_test;</code>可以看到生成表格的样式：</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>NO</td>
+<td>PRI</td>
+<td>null</td>
+<td>auto_increment</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(20)</td>
+<td>NO</td>
+<td></td>
+<td>null</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表就此生成好了。</p>
+<h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><h2 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h2><p>假设现在已经创建好了一个表格，但是又要修改,如何修改呢。首先直接修改modes.py的代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    docstring</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    age = models.IntegerField()</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>然后运行<code>python manage.py makemigrations</code>,这个时候会出现一句提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">You are trying to add a non-nullable field &#39;age&#39; to test without a default; we can&#39;t do that (the database needs something to populate existing rows).</span><br><span class="line">Please select a fix:</span><br><span class="line"> 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)</span><br><span class="line"> 2) Quit, and let me add a default in models.py</span><br></pre></td></tr></table></figure>
+<p>这就是说，你正在添加一个新的age但是没有默认值，需要你手动添加一个默认值进行操作，既然要添加就直接选择1，然后随意添加一个变量。之后就会生成一个<code>0002_test_age.py</code>的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Migrations for &#39;app&#39;:</span><br><span class="line">  app\migrations\0002_test_age.py</span><br><span class="line">    - Add field age to test</span><br></pre></td></tr></table></figure>
+<p>然后再运行<code>Python manage.py migrate</code>就能够直接修改数据库。</p>
+<h2 id="修改-1"><a href="#修改-1" class="headerlink" title="修改"></a>修改</h2><p>如果不是要新增表的内容而是要修改某一个字段的名字，也是一样的操作，当我们把name修改成first_name之后运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(ENV)&gt; python manage.py makemigrations</span><br><span class="line">Did you rename test.name to test.first_name (a CharField)? [y&#x2F;N] y</span><br><span class="line">Migrations for &#39;app&#39;:</span><br><span class="line">  app\migrations\0003_auto_20201120_2336.py</span><br><span class="line">    - Rename field name on test to first_name</span><br></pre></td></tr></table></figure>
+<p>然后照常操作即可！</p>
+<blockquote>
+<p>所有的修改都能够直接通过修改代码对数据库进行操作，包括修改表的结构、字段、类型、删除等等。</p>
+</blockquote>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src="https://link.hhtjim.com/163/1438865533.mp3">
@@ -98,7 +196,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#model"><span class="toc-number">1.</span> <span class="toc-text">model</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.1.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">操作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">配置</span></a></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ORM"><span class="toc-number">1.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">操作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%A6%E5%86%99"><span class="toc-number">5.</span> <span class="toc-text">书写</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-number">6.</span> <span class="toc-text">修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E"><span class="toc-number">6.1.</span> <span class="toc-text">新增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-1"><span class="toc-number">6.2.</span> <span class="toc-text">修改</span></a></li></ol></li></ol>	
         </div>
     
 </div>
