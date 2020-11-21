@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>进程与线程 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,我学了很久的编程，但是总是有一些小问题出现，因此我打算把这些边边角角的问题整理起来一起学习解决，首先就是进程和线程的关系。常常听见有人说程序太慢搞个多线程或者多进程，但是多线程跟多进程分别是啥，有什,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">进程与线程</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">进程与线程</h1>
+        <div class="stuff">
+            <span>十一月 21, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%B8%80%E6%97%B6%E5%85%B4%E8%B5%B7/" rel="tag">一时兴起</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>我学了很久的编程，但是总是有一些小问题出现，因此我打算把这些边边角角的问题整理起来一起学习解决，首先就是进程和线程的关系。常常听见有人说程序太慢搞个多线程或者多进程，但是多线程跟多进程分别是啥，有什么区别呢？百度这个问题通常是一个标准答案：<strong>进程是资源分配的最小单位，线程是CPU调度的最小单位。</strong></p>
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><p>如果非要形容两者之间的关系，可以做一个比喻：进程=团队，线程=个人</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线程在进程下进行</td>
+<td>个人在团队下工作</td>
+</tr>
+<tr>
+<td>一个进程可以包含多个线程</td>
+<td>一个团队可以有多个人</td>
+</tr>
+<tr>
+<td>不同进程之间数据很难共享</td>
+<td>两个团队之间工作很难相同，工作几乎不互通，各做各的</td>
+</tr>
+<tr>
+<td>同一进程下的线程数据很容易共享</td>
+<td>团队内部很容易共享资源</td>
+</tr>
+<tr>
+<td>进程要比线程多消耗资源</td>
+<td>培养优秀的团队比培养优秀的个人更难</td>
+</tr>
+<tr>
+<td>进程之间不会相互影响，但是一个线程挂掉了可能导致这个进程挂掉</td>
+<td>一个团队挂掉其他团队可能没事，但是团队内一个人掉链子可能导致团队覆灭</td>
+</tr>
+<tr>
+<td>进程使用内存可以上锁，一个线程使用资源其他线程等待</td>
+<td>一个团队公用一个账户，一个人登录其他人不能登录，这也是互斥锁的概念</td>
+</tr>
+<tr>
+<td>进程使用内存地址可以限定用量</td>
+<td>一个团队花多少钱培养可以做限定</td>
+</tr>
+</tbody></table>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>计算机的核心是CPU，它承担了所有的计算任务，而操作系统是计算机的管理者，它负责任务的调度，资源的分配和管理，统领整个计算机硬件；应用程序是具有某种功能的程序，程序是运行于操作系统之上的。</p>
+<p>进程是<strong>一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程</strong>,是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。进程是一种抽象的概念，从来没有统一的标准定义。进程一般由程序，数据集合和进程控制块三部分组成。程序用于描述进程要完成的功能，是控制进程执行的指令集；数据集合是程序在执行时所需要的数据和工作区；程序控制块包含进程的描述信息和控制信息是进程存在的唯一标志。当我们启动电脑上的一个程序的时候就相当于启动了一个进程。</p>
+<blockquote>
+<p>进程具有的特征：</p>
+<ul>
+<li>动态性：进程是程序的一次执行过程，是临时的，有生命期的，是动态产生，动态消亡的；</li>
+<li>并发性：任何进程都可以同其他进行一起并发执行；</li>
+<li>独立性：进程是系统进行资源分配和调度的一个独立单位；</li>
+<li>结构性：进程由程序，数据和进程控制块三部分组成</li>
+</ul>
+</blockquote>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>在早期的操作系统中并没有线程的概念，进程是拥有资源和独立运行的最小单位，也是程序执行的最小单位。任务调度采用的是时间片轮转的抢占式调度方式，而进程是任务调度的最小单位，<strong>每个进程有各自独立的一块内存，使得各个进程之间内存地址相互隔离</strong>。<br>后来，随着计算机的发展，对CPU的要求越来越高，进程之间的切换开销较大，已经无法满足越来越复杂的程序的要求了。于是就发明了线程，线程是程序执行中一个单一的顺序控制流程，是<strong>程序执行流的最小单元</strong>，是处理器调度和分派的基本单位。<strong>一个进程可以有一个或多个线程，各个线程之间共享程序的内存空间(也就是所在进程的内存空间)**。一个标准的线程由</strong>线程ID<strong>，当前</strong>指令指针PC<strong>，</strong>寄存器<strong>和</strong>堆栈**组成。而进程由内存空间(代码，数据，进程空间，打开的文件)和一个或多个线程组成。</p>
+<h1 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h1><p>大部分操作系统的任务调度是采用<strong>时间片轮转</strong>的抢占式调度方式，也就是说一个任务执行一小段时间后强制暂停去执行下一个任务，每个任务轮流执行。任务执行的一小段时间叫做时间片，任务正在执行时的状态叫运行状态，任务执行一段时间后强制暂停去执行下一个任务，被暂停的任务就处于就绪状态，等待下一个属于它的时间片的到来。这样每个任务都能得到执行，由于CPU的执行效率非常高，时间片非常短，在各个任务之间快速地切换，给人的感觉就是多个任务在“同时进行”，这也就是我们所说的<strong>并发</strong>。<br>这样有很多的好处，假设没有线程，第一个进程完成需要一个小时，第二个进程结束只需要一秒钟，那么没有线程的时候第二个进程就必须等待第一个进程进行完毕才能够执行，这就浪费了很多时间，但是有了线程，每个进程都能抢占到一定的资源，这样耗时较短的进程就能提前结束。</p>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>说完了进程跟线程，还有一个程不得不提，那就是<del>携程</del>协程。<br>协程，英文Coroutines，协程是一种程序组件，是由子例程（过程、函数、例程、方法、子程序）的概念泛化而来的，子例程只有一个入口点且只返回一次，而协程允许多个入口点，协程可以在指定位置挂起和恢复执行。是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。这样带来的好处就是性能得到了很大的提升，不会像线程切换那样消耗资源。<br>说了很多可能还是没有说明白协程是什么，简单来说就是当我们执行一个程序的时候我们可以在多个子程序中来回切换，也就是在执行A函数的时候可以随时切换到B函数中去，然后及时的回到A函数当中来，这个过程不会导致线程的切换，因为这是由程序本身控制而不是操作系统控制的。如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consume</span>():</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        number = <span class="keyword">yield</span></span><br><span class="line">        print(<span class="string">&quot;开始消费&quot;</span>,number)</span><br><span class="line">consumer = consume() </span><br><span class="line">next(consumer)</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">100</span>):</span><br><span class="line">    print(<span class="string">&quot;开始生产&quot;</span>,num)</span><br><span class="line">    consumer.send(num)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">开始生产 0</span><br><span class="line">开始消费 0</span><br><span class="line">开始生产 1</span><br><span class="line">开始消费 1</span><br><span class="line">开始生产 2</span><br><span class="line">...</span><br><span class="line">开始生产 98</span><br><span class="line">开始消费 98</span><br><span class="line">开始生产 99</span><br><span class="line">开始消费 99</span><br></pre></td></tr></table></figure>
+<p>我们假设理解成循环的时候调用一个函数consume，函数consume输出传入的参数，但是在这个过程中每调用一次函数就会导致一个新的线程被创建出来，如果是我们能够让函数线运行起来，当我们需要让函数启动的时候函数再启动就不会一直不断地生成线程了。而这个代码就是实现这个功能。</p>
+<ul>
+<li>在代码中定义了一个函数consume。</li>
+<li>然后使用<code>consumer = consume()</code>定义了一个协程。</li>
+<li>执行<code>next(consumer)</code>让函数运行起来，此时函数运行到了<code>yield</code>。函数就此暂停。</li>
+<li>这个时候开始循环传入变量，变量会通过<code>yield</code>被赋值给<code>number</code>。函数开始运行后续内容，输出结果。同时再次回到<code>yield</code>，函数再次暂停。</li>
+<li>反复如此，要知道函数只被启动过一次，只有在传入参数的时候才会运行，一旦没有参数，协程就次暂停，但是协程没有被关闭，依然在运行，在合适的条件下会再次启动。</li>
+</ul>
+<h1 id="进程、线程、协程的对比"><a href="#进程、线程、协程的对比" class="headerlink" title="进程、线程、协程的对比"></a>进程、线程、协程的对比</h1><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><ul>
+<li><p>协程既不是进程也不是线程，协程仅仅是一个特殊的函数，协程它进程和进程不是一个维度的。</p>
+</li>
+<li><p>一个进程可以包含多个线程，一个线程可以包含多个协程。</p>
+</li>
+<li><p>一个线程内的多个协程虽然可以切换，但是多个协程是串行执行的，只能在一个线程内运行，没法利用CPU多核能力。</p>
+</li>
+<li><p>协程与进程一样，切换是存在上下文切换问题的。</p>
+<h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2></li>
+<li><p>进程的切换者是操作系统，切换时机是根据操作系统自己的切换策略，用户是无感知的。进程的切换内容包括页全局目录、内核栈、硬件上下文，切换内容保存在内存中。进程切换过程是由“用户态到内核态到用户态”的方式，切换效率低。</p>
+</li>
+<li><p>线程的切换者是操作系统，切换时机是根据操作系统自己的切换策略，用户无感知。线程的切换内容包括内核栈和硬件上下文。线程切换内容保存在内核栈中。线程切换过程是由“用户态到内核态到用户态”， 切换效率中等。</p>
+</li>
+<li><p>协程的切换者是用户（编程者或应用程序），切换时机是用户自己的程序所决定的。协程的切换内容是硬件上下文，切换内存保存在用户自己的变量（用户栈或堆）中。协程的切换过程只有用户态，即没有陷入内核态，因此切换效率高。</p>
+</li>
+</ul>
+<p>因为协程切换<strong>只涉及基本的CPU上下文切换</strong>，而<strong>线程的调度只有拥有最高权限的内核空间才可以完成</strong>，所以线程的切换涉及到<strong>用户空间和内核空间</strong>的切换，也就是<strong>特权模式切换</strong>，然后需要操作系统调度模块完成线程调度（taskstruct），而且除了和协程相同基本的 CPU 上下文，还有线程私有的栈和寄存器等，说白了就是上下文比协程多一些，所以协程的开销为远远小于线程的开销。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/1443143188.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83"><span class="toc-number">1.</span> <span class="toc-text">比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="toc-number">4.</span> <span class="toc-text">任务调度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">协程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text">进程、线程、协程的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-number">6.1.</span> <span class="toc-text">对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="toc-number">6.2.</span> <span class="toc-text">上下文切换</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
