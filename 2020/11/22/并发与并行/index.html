@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>并发与并行 - 望</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="望的个人博客,并发定义并发（Concurrent）：指两个或多个事件在同一时间间隔内发生，即交替做不同事的能力，多线程是并发的一种形式。是否有并发在于是否具有处理多个任务的能力而并非同时处理多个任务。假设你只有一,"> 
+    <meta name="author" content="Orion"> 
+    <link rel="alternative" href="atom.xml" title="望" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">望</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://M42-Orion.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">并发与并行</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">并发与并行</h1>
+        <div class="stuff">
+            <span>十一月 22, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%B8%80%E6%97%B6%E5%85%B4%E8%B5%B7/" rel="tag">一时兴起</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>并发（Concurrent）</strong>：指两个或多个事件在同一时间间隔内发生，即交替做不同事的能力，多线程是并发的一种形式。是否有并发在于是否具有处理多个任务的能力而并非同时处理多个任务。<br>假设你只有一台电脑但是有两个人需要使用，如果说只能第一个人先用完第二个人才能够继续使用就说明不具备并发能力，但是如果第二个人来了立马就能切换使用就说明具有并发能力，并发不一定要同时处理但一定要具有及时切换的能力。<br>如果某个系统支持两个或者多个动作（Action）同时存在，那么这个系统就是一个并发系统。如果某个系统支持两个或者多个动作同时执行，那么这个系统就是一个并行系统。并发系统与并行系统这两个定义之间的关键差异在于”<strong>存在</strong>“这个词。</p>
+<h2 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h2><p>常见的高并发通常是请求高并发跟数据库高并发问题</p>
+<h4 id="数据库高并发"><a href="#数据库高并发" class="headerlink" title="数据库高并发"></a>数据库高并发</h4><p><strong>缓存式的Web应用程序架构</strong><br>在Web层和db层之间加一层cache层，主要目的：减少数据库读取负担，提高数据读取速度。cache存取的媒介是内存，可以考虑采用分布式的cache层，这样更容易破除内存容量的限制，同时增加了灵活性。</p>
+<p><strong>业务拆分</strong><br>如果条件允许的话在请求增大后尽可能多且合理的将表进行拆分，假设有用户、作品、好友等几个模块就拆分成多个表，这样的话就变成了多个数据库同时承担压力，系统的吞吐量自然就上去了。</p>
+<p><strong>MySQL主从复制，读写分离</strong><br>　当数据库的写压力增加，cache层（如Memcached）只能缓解数据库的读取压力。读写集中在一个数据库上让数据库不堪重负。使用主从复制技术（master-slave模式）来达到读写分离，以提高读写性能和读库的可扩展性。读写分离就是只在主服务器上写，只在从服务器上读，基本原理是让主数据库处理事务性查询，而从数据库处理select查询，数据库复制被用于把事务性查询（增删改）导致的改变更新同步到集群中的从数据库。</p>
+<blockquote>
+<p>MySQL读写分离提升系统性能：</p>
+<ul>
+<li>主从只负责各自的读和写，极大程度缓解X锁和S锁争用。</li>
+<li>slave可以配置MyISAM引擎，提升查询性能以及节约系统开销。</li>
+<li>master直接写是并发的，slave通过主库发送来的binlog恢复数据是异步的。</li>
+<li>slave可以单独设置一些参数来提升其读的性能。</li>
+<li>增加冗余，提高可用性。</li>
+</ul>
+</blockquote>
+<p><strong>分表分库</strong><br>在cache层的高速缓存，MySQL的主从复制，读写分离的基础上，这时MySQL主库的写压力开始出现瓶颈，而数据量的持续猛增，由于MyISAM使用表锁，在高并发下会出现严重的锁问题，大量的高并发MySQL应用开始使用InnoDB引擎代替MyISAM。采用Master-Slave复制模式的MySQL架构，只能对数据库的读进行扩展，而对数据的写操作还是集中在Master上。这时需要对数据库的吞吐能力进一步地扩展，以满足高并发访问与海量数据存储的需求。</p>
+<ul>
+<li>对于访问极为频繁且数据量巨大的单表来说，首先要做的是减少单表的记录条数，以便减少数据查询所需的时间，提高数据库的吞吐，这就是所谓的分表。在分表之前，首先需要选择适当的分表策略，使得数据能够较为均衡地分布到多张表中，并且不影响正常的查询。</li>
+<li>分表能够解决单表数据量过大带来的查询效率下降的问题，但是却无法给数据库的并发处理能力带来质的提升。面对高并发的读写访问，当数据库master服务器无法承载写操作压力时，不管如何扩展Slave服务器都是没有意义的，对数据库进行拆分，从而提高数据库写入能力，即分库。</li>
+<li>数据库经过业务拆分及分库分表，虽然查询性能和并发处理能力提高了。但是原本跨表的事务上升为分布式事务；由于记录被切分到不同的库和不同的表中，难以进行多表关联查询，并且不能不指定路由字段对数据进行查询。且分库分表后需要进一步对系统进行扩容（路由策略变更）将变得非常不方便，需要重新进行数据迁移。</li>
+</ul>
+<h4 id="请求高并发"><a href="#请求高并发" class="headerlink" title="请求高并发"></a>请求高并发</h4><ul>
+<li>服务器代理<strong>nginx</strong>，做服务器的均衡负载，把压力均衡到多台服务器</li>
+<li><strong>部署集群</strong> mysql数据库， redis服务器，或者mongodb服务器，把一些常用的查询数据，并且不会经常的变化的数据保存到其他NoSQL DB服务器中，来减少数据库服务器的压力，加快数据的响应速度。</li>
+<li>数据缓存，Cache</li>
+<li>在高并发接口的设计中可以使用具有高并发能力的编程语言去开发，如：nodejs 做web接口</li>
+<li>服务器部署，图片服务器分离，静态文件走CDN</li>
+<li>DBA数据库的优化查询条件，索引优化</li>
+<li><strong>消息存储机制</strong>，将数据添加到信息队列中(redis list)，然后再写工具去入库</li>
+<li>脚本合理控制请求，如，防止用户重复点击导致的ajax多余的请求，等等。</li>
+</ul>
+<h1 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h1><p><strong>并行（Parallel）</strong>：指两个或者多个事件在同一时刻发生，即同时做不同事的能力。并发是一个电脑可以支持两个人切换着轮流玩，那么并行就意味着有两台电脑可以支持两个人玩不同的东西。是否是并发在于一个CPU是否运行两个进程同时存在，而并行指的是两个CPU同时运行处理不同的进程。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/1320341933.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">并发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91"><span class="toc-number">1.2.</span> <span class="toc-text">高并发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%AB%98%E5%B9%B6%E5%8F%91"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">数据库高并发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%AB%98%E5%B9%B6%E5%8F%91"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">请求高并发</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C"><span class="toc-number">2.</span> <span class="toc-text">并行</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
